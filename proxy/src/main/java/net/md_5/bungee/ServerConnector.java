@@ -1,18 +1,21 @@
 package net.md_5.bungee;
 
-import com.google.common.base.Charsets;
-import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
+import java.math.BigInteger;
 
 import java.nio.charset.StandardCharsets;
+import java.security.PublicKey;
 import java.util.Arrays;
 import java.util.Queue;
 import java.util.Set;
 import java.util.UUID;
+import javax.crypto.SecretKey;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.config.ServerInfo;
@@ -29,25 +32,32 @@ import net.md_5.bungee.connection.LoginResult;
 import net.md_5.bungee.forge.ForgeConstants;
 import net.md_5.bungee.forge.ForgeServerHandler;
 import net.md_5.bungee.forge.ForgeUtils;
+import net.md_5.bungee.jni.cipher.BungeeCipher;
 import net.md_5.bungee.netty.ChannelWrapper;
 import net.md_5.bungee.netty.HandlerBoss;
 import net.md_5.bungee.netty.PacketHandler;
 import net.md_5.bungee.netty.PipelineUtils;
+import net.md_5.bungee.netty.cipher.CipherDecoder;
+import net.md_5.bungee.netty.cipher.CipherEncoder;
 import net.md_5.bungee.protocol.DefinedPacket;
-import net.md_5.bungee.protocol.MinecraftDecoder;
-import net.md_5.bungee.protocol.MinecraftOutput;
 import net.md_5.bungee.protocol.Protocol;
 import net.md_5.bungee.protocol.ProtocolConstants;
-import net.md_5.bungee.protocol.packet.BossBar;
 import net.md_5.bungee.protocol.packet.EncryptionRequest;
+import net.md_5.bungee.protocol.packet.EncryptionResponse;
 import net.md_5.bungee.protocol.packet.Handshake;
 import net.md_5.bungee.protocol.packet.Kick;
 import net.md_5.bungee.protocol.packet.Login;
+import net.md_5.bungee.protocol.packet.LoginRequest;
 import net.md_5.bungee.protocol.packet.LoginSuccess;
 import net.md_5.bungee.protocol.packet.PluginMessage;
 import net.md_5.bungee.protocol.packet.Respawn;
 import net.md_5.bungee.protocol.packet.ScoreboardObjective;
 import net.md_5.bungee.protocol.packet.SetCompression;
+
+import org.spacehq.mc.auth.data.GameProfile;
+import org.spacehq.mc.auth.exception.request.RequestException;
+import org.spacehq.mc.auth.service.AuthenticationService;
+import org.spacehq.mc.auth.service.SessionService;
 
 @RequiredArgsConstructor
 public class ServerConnector extends PacketHandler
@@ -61,6 +71,28 @@ public class ServerConnector extends PacketHandler
     @Getter
     private ForgeServerHandler handshakeHandler;
     private boolean obsolete;
+
+    //universalproxy
+    private final SessionService sessionService = new SessionService();
+    private final AuthenticationService authService = login();
+
+    private AuthenticationService login()
+    {
+        AuthenticationService authService = new AuthenticationService();
+        authService.setUsername( "EMAIL" );
+        authService.setPassword( "PASSWORD" );
+        //alternative to setPassword
+//        authService.setAccessToken( accessToken );
+        try
+        {
+            authService.login();
+        } catch ( RequestException ex )
+        {
+            ex.printStackTrace();
+        }
+
+        return authService;
+    }
 
     private enum State
     {
@@ -139,7 +171,10 @@ public class ServerConnector extends PacketHandler
         channel.write( copiedHandshake );
 
         channel.setProtocol( Protocol.LOGIN );
-        channel.write( user.getPendingConnection().getLoginRequest() );
+
+        LoginRequest loginRequest = user.getPendingConnection().getLoginRequest();
+        loginRequest.setData( authService.getSelectedProfile().getName() );
+        channel.write( loginRequest );
     }
 
     @Override
@@ -303,7 +338,28 @@ public class ServerConnector extends PacketHandler
     @Override
     public void handle(EncryptionRequest encryptionRequest) throws Exception
     {
-        throw new RuntimeException( "Server is online mode!" );
+        SecretKey sharedSecret = EncryptionUtil.generateSharedKey();
+
+        String serverId = encryptionRequest.getServerId();
+        byte[] inputVerify = encryptionRequest.getVerifyToken();
+        PublicKey publicKey = EncryptionUtil.decodePublicKey( encryptionRequest.getPublicKey() );
+
+        String serverHash = ( new BigInteger( EncryptionUtil.getServerIdHash( serverId, publicKey, sharedSecret ) ) ).toString( 16 );
+
+        GameProfile profile = authService.getSelectedProfile();
+        //make authentification request to mojang
+        sessionService.joinServer( profile, authService.getAccessToken(), serverHash );
+
+        byte[] secret = EncryptionUtil.encrypt(publicKey, sharedSecret.getEncoded() );
+        byte[] verify = EncryptionUtil.encrypt(publicKey, inputVerify );
+        ch.write( new EncryptionResponse( secret, verify ) );
+        //encrypt connection
+
+        BungeeCipher decrypt = EncryptionUtil.getCipher( false, sharedSecret );
+        ch.addBefore( PipelineUtils.FRAME_DECODER, PipelineUtils.DECRYPT_HANDLER, new CipherDecoder( decrypt ) );
+        BungeeCipher encrypt = EncryptionUtil.getCipher( true, sharedSecret );
+        ch.addBefore( PipelineUtils.FRAME_PREPENDER, PipelineUtils.ENCRYPT_HANDLER, new CipherEncoder( encrypt ) );
+        throw CancelSendSignal.INSTANCE;
     }
 
     @Override

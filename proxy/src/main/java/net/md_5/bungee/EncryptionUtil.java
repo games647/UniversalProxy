@@ -1,16 +1,20 @@
 package net.md_5.bungee;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.security.Key;
 import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Arrays;
 import java.util.Random;
 import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import lombok.Getter;
@@ -88,5 +92,57 @@ public class EncryptionUtil
         Cipher hasher = Cipher.getInstance( "RSA" );
         hasher.init( Cipher.ENCRYPT_MODE, key );
         return hasher.doFinal( b );
+    }
+
+    //Universal start
+    public static SecretKey generateSharedKey()
+    {
+        try
+        {
+            KeyGenerator gen = KeyGenerator.getInstance( "AES" );
+            gen.init( 128 );
+            return gen.generateKey();
+        } catch ( NoSuchAlgorithmException e )
+        {
+            throw new Error( "Failed to generate shared key.", e );
+        }
+    }
+
+    public static PublicKey decodePublicKey(byte bytes[]) throws IOException
+    {
+        try
+        {
+            return KeyFactory.getInstance( "RSA" ).generatePublic( new X509EncodedKeySpec( bytes ) );
+        } catch ( GeneralSecurityException e )
+        {
+            throw new IOException( "Could not decrypt public key.", e );
+        }
+    }
+
+    public static byte[] getServerIdHash(String serverId, PublicKey publicKey, SecretKey secretKey)
+    {
+        try
+        {
+            return encrypt( "SHA-1", new byte[][]
+            {
+                serverId.getBytes( "ISO_8859_1" ), secretKey.getEncoded(), publicKey.getEncoded()
+            } );
+        } catch ( UnsupportedEncodingException e )
+        {
+            throw new Error( "Failed to generate server id hash.", e );
+        }
+    }
+
+    private static byte[] encrypt(String encryption, byte[]... data) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance(encryption);
+            for(byte array[] : data) {
+                digest.update(array);
+            }
+
+            return digest.digest();
+        } catch(NoSuchAlgorithmException e) {
+            throw new Error("Failed to encrypt data.", e);
+        }
     }
 }
