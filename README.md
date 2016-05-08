@@ -29,6 +29,7 @@ So we can easily switch between servers with just an additional command.
     * Even additional BungeeCord servers works
 2. Give cracked users Paid user accounts without giving them
   the credentials.
+3. Make shareable accounts
 
 ## Limitation
 
