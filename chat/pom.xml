@@ -18,16 +18,11 @@
     <name>Waterfall-Chat</name>
     <description>Minecraft JSON chat API intended for use with Waterfall</description>
 
-    <properties>
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.3.1</version>
+            <version>2.6.2</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
