@@ -14,7 +14,7 @@ available Minecraft servers on the globe. (^^)
 
 So we can easily switch between servers with just an additional command.
 
-This project is similar to mcleaks.net
+This project is similar to mcleaks.net.
 
 ## Features
 
@@ -30,7 +30,11 @@ This project is similar to mcleaks.net
     * Even online mode servers works
     * Even additional BungeeCord servers works
 2. Give cracked users Paid user accounts without giving them
-  the credentials.
+  the credentials. So you can cracked players can player on Minecraft servers
+  where paid authentication is required.
+
+  => Cracked player can players can play on servers like mineplex, gomme
+  , cubecraft
 3. Make shareable accounts
 
 ## Limitation

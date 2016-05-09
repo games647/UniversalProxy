@@ -78,7 +78,8 @@ public class ServerConnector extends PacketHandler
 
     private AuthenticationService login()
     {
-        AuthenticationService authService = new AuthenticationService();
+        String clientToken = UUID.randomUUID().toString();
+        AuthenticationService authService = new AuthenticationService(clientToken);
         authService.setUsername( "EMAIL" );
         authService.setPassword( "PASSWORD" );
         //alternative to setPassword
