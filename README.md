@@ -14,6 +14,8 @@ available Minecraft servers on the globe. (^^)
 
 So we can easily switch between servers with just an additional command.
 
+This project is similar to mcleaks.net
+
 ## Features
 
 * All the features BungeeCord and Waterfall also has
