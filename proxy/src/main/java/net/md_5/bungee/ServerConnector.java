@@ -55,8 +55,6 @@ import net.md_5.bungee.protocol.packet.ScoreboardObjective;
 import net.md_5.bungee.protocol.packet.SetCompression;
 
 import org.spacehq.mc.auth.data.GameProfile;
-import org.spacehq.mc.auth.exception.request.RequestException;
-import org.spacehq.mc.auth.service.AuthenticationService;
 import org.spacehq.mc.auth.service.SessionService;
 
 @RequiredArgsConstructor
@@ -74,26 +72,6 @@ public class ServerConnector extends PacketHandler
 
     //universalproxy
     private final SessionService sessionService = new SessionService();
-    private final AuthenticationService authService = login();
-
-    private AuthenticationService login()
-    {
-        String clientToken = UUID.randomUUID().toString();
-        AuthenticationService authService = new AuthenticationService(clientToken);
-        authService.setUsername( "EMAIL" );
-        authService.setPassword( "PASSWORD" );
-        //alternative to setPassword
-//        authService.setAccessToken( accessToken );
-        try
-        {
-            authService.login();
-        } catch ( RequestException ex )
-        {
-            ex.printStackTrace();
-        }
-
-        return authService;
-    }
 
     private enum State
     {
@@ -174,7 +152,11 @@ public class ServerConnector extends PacketHandler
         channel.setProtocol( Protocol.LOGIN );
 
         LoginRequest loginRequest = user.getPendingConnection().getLoginRequest();
-        loginRequest.setData( authService.getSelectedProfile().getName() );
+        if ( user.getAuthService() != null )
+        {
+            loginRequest.setData( user.getAuthService().getSelectedProfile().getName() );
+        }
+
         channel.write( loginRequest );
     }
 
@@ -339,23 +321,29 @@ public class ServerConnector extends PacketHandler
     @Override
     public void handle(EncryptionRequest encryptionRequest) throws Exception
     {
+        if ( user.getAuthService() == null )
+        {
+            throw new RuntimeException( "Server is online mode!" );
+        }
+
         SecretKey sharedSecret = EncryptionUtil.generateSharedKey();
 
         String serverId = encryptionRequest.getServerId();
         byte[] inputVerify = encryptionRequest.getVerifyToken();
         PublicKey publicKey = EncryptionUtil.decodePublicKey( encryptionRequest.getPublicKey() );
 
-        String serverHash = ( new BigInteger( EncryptionUtil.getServerIdHash( serverId, publicKey, sharedSecret ) ) ).toString( 16 );
+        String serverHash = ( new BigInteger( EncryptionUtil.getServerIdHash( serverId, publicKey, sharedSecret ) ) )
+                .toString( 16 );
 
-        GameProfile profile = authService.getSelectedProfile();
+        GameProfile profile = user.getAuthService().getSelectedProfile();
         //make authentification request to mojang
-        sessionService.joinServer( profile, authService.getAccessToken(), serverHash );
+        sessionService.joinServer( profile, user.getAuthService().getAccessToken(), serverHash );
 
         byte[] secret = EncryptionUtil.encrypt(publicKey, sharedSecret.getEncoded() );
         byte[] verify = EncryptionUtil.encrypt(publicKey, inputVerify );
         ch.write( new EncryptionResponse( secret, verify ) );
-        //encrypt connection
 
+        //encrypt connection
         BungeeCipher decrypt = EncryptionUtil.getCipher( false, sharedSecret );
         ch.addBefore( PipelineUtils.FRAME_DECODER, PipelineUtils.DECRYPT_HANDLER, new CipherDecoder( decrypt ) );
         BungeeCipher encrypt = EncryptionUtil.getCipher( true, sharedSecret );
@@ -368,6 +356,8 @@ public class ServerConnector extends PacketHandler
     {
         ServerInfo def = user.updateAndGetNextServer( target );
         ServerKickEvent event = new ServerKickEvent( user, target, ComponentSerializer.parse( kick.getMessage() ), def, ServerKickEvent.State.CONNECTING );
+
+        user.sendMessage( "You were kicked " + event.getKickReason() );
         if ( event.getKickReason().toLowerCase().contains( "outdated" ) && def != null )
         {
             // Pre cancel the event if we are going to try another server

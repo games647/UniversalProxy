@@ -85,13 +85,6 @@
             <version>3.20.0-GA</version>
             <scope>runtime</scope>
         </dependency>
-
-        <!--Custom-->
-        <dependency>
-            <groupId>org.spacehq</groupId>
-            <artifactId>mcauthlib</artifactId>
-            <version>1.0</version>
-        </dependency>
     </dependencies>
 
     <build>

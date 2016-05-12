@@ -11,18 +11,14 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.util.internal.PlatformDependent;
 import java.net.InetSocketAddress;
-import java.util.Arrays;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Queue;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import lombok.Getter;
 import lombok.NonNull;
@@ -41,8 +37,6 @@ import net.md_5.bungee.api.event.ServerConnectEvent;
 import net.md_5.bungee.api.score.Scoreboard;
 import net.md_5.bungee.chat.ComponentSerializer;
 import net.md_5.bungee.connection.InitialHandler;
-import net.md_5.bungee.connection.LoginResult;
-import net.md_5.bungee.connection.LoginResult.Property;
 import net.md_5.bungee.entitymap.EntityMap;
 import net.md_5.bungee.forge.ForgeClientHandler;
 import net.md_5.bungee.forge.ForgeConstants;
@@ -62,11 +56,11 @@ import net.md_5.bungee.protocol.packet.Kick;
 import net.md_5.bungee.protocol.packet.PlayerListHeaderFooter;
 import net.md_5.bungee.protocol.packet.PluginMessage;
 import net.md_5.bungee.protocol.packet.SetCompression;
-import net.md_5.bungee.tab.Global;
-import net.md_5.bungee.tab.GlobalPing;
 import net.md_5.bungee.tab.ServerUnique;
 import net.md_5.bungee.tab.TabList;
 import net.md_5.bungee.util.CaseInsensitiveSet;
+import org.spacehq.mc.auth.exception.request.RequestException;
+import org.spacehq.mc.auth.service.AuthenticationService;
 
 @RequiredArgsConstructor
 public final class UserConnection implements ProxiedPlayer
@@ -144,6 +138,10 @@ public final class UserConnection implements ProxiedPlayer
     @Getter
     @Setter
     private ForgeServerHandler forgeServerHandler;
+
+    @Getter
+    private AuthenticationService authService;
+
     /*========================================================================*/
     private final Unsafe unsafe = new Unsafe()
     {
@@ -153,6 +151,30 @@ public final class UserConnection implements ProxiedPlayer
             ch.write( packet );
         }
     };
+
+    @Override
+    public void login(UUID clientToken, String accessToken, String email) throws RequestException
+    {
+        AuthenticationService authService = new AuthenticationService( clientToken.toString() );
+        authService.setUsername( email );
+        authService.setAccessToken( accessToken );
+        authService.login();
+
+        //update on success
+        this.authService = authService;
+    }
+
+    @Override
+    public void login(String email, String password) throws RequestException
+    {
+        AuthenticationService authService = new AuthenticationService();
+        authService.setUsername( email );
+        authService.setPassword( password );
+        authService.login();
+
+        //update on success
+        this.authService = authService;
+    }
 
     public void init()
     {

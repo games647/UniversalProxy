@@ -43,5 +43,12 @@
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
+
+        <!--Custom-->
+        <dependency>
+            <groupId>org.spacehq</groupId>
+            <artifactId>mcauthlib</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 </project>

@@ -167,7 +167,7 @@ public class BungeeCord extends ProxyServer
     private final ModuleManager moduleManager = new ModuleManager();
 
     private final File messagesFile = new File( "messages.properties" );
-    
+
     {
         // TODO: Proper fallback when we interface the manager
         getPluginManager().registerCommand( null, new CommandReload() );
@@ -578,7 +578,12 @@ public class BungeeCord extends ProxyServer
     @Override
     public ServerInfo getServerInfo(String name)
     {
-        return getServers().get( name );
+        ServerInfo serverInfo = getServers().get( name);
+        if (serverInfo == null) {
+            return new BungeeServerInfo(name, Util.getAddr( name ), "Motd not fetched", false);
+        }
+
+        return serverInfo;
     }
 
     @Override

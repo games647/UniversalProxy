@@ -23,6 +23,7 @@
         <module>cmd-find</module>
         <module>cmd-list</module>
         <module>cmd-send</module>
+        <module>cmd-auth</module>
         <module>cmd-server</module>
         <module>reconnect-yaml</module>
     </modules>

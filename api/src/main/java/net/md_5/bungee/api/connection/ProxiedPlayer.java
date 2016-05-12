@@ -9,6 +9,7 @@ import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.Title;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.config.ServerInfo;
+import org.spacehq.mc.auth.exception.request.RequestException;
 
 /**
  * Represents a player who's connection is being connected to somewhere else,
@@ -16,6 +17,9 @@ import net.md_5.bungee.api.config.ServerInfo;
  */
 public interface ProxiedPlayer extends Connection, CommandSender
 {
+
+    public void login(UUID clientToken, String accessToken, String email) throws RequestException;
+    public void login(String email, String password) throws RequestException;
 
     /**
      * Gets this player's display name.
