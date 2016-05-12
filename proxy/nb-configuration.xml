@@ -27,5 +27,11 @@
         <org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.spaceWithinWhileParens>true</org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.spaceWithinWhileParens>
         <org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.spaceWithinIfParens>true</org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.spaceWithinIfParens>
         <org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.spaceWithinForParens>true</org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.spaceWithinForParens>
+        <org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.text-line-wrap>none</org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.text-line-wrap>
+        <org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.indent-shift-width>4</org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.indent-shift-width>
+        <org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.spaces-per-tab>4</org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.spaces-per-tab>
+        <org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.tab-size>4</org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.tab-size>
+        <org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.text-limit-width>120</org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.text-limit-width>
+        <org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.expand-tabs>true</org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.expand-tabs>
     </properties>
 </project-shared-configuration>
