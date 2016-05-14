@@ -1,4 +1,4 @@
-# Needs a Name
+# UniversalProxy
 
 ## Description
 
@@ -37,6 +37,33 @@ This project is similar to mcleaks.net.
   , cubecraft
 3. Make shareable accounts
 
+## How to setup
+
+* Build the complete with Maven "mvn clean install"
+* Go into "PROJECT/bootstrap/" and copy the waterfall.jar file
+* Start a new server using this file
+* Now go into "PROJECT/module/" copy the files from
+"/cmd-auth/target/cmd_auth.jar" and "/cmd-server/target/cmd_server.jar"
+into the "/modules/" folder of the server
+* Now restart the server
+* You can now test it ingame using the following commands
+```/auth clientToken accessToken email```
+and then /server IP/Domain
+
+Client token, accessToken and the email can be extracted from the
+launcher_profiles.json file (in your .minecraft folder)
+
+Warning: The server will invalidate the current accesToken and will receive
+a new one. Then you cannot auto login in your launcher after you restarted it.
+
+You could work-around this by backing up your launcher profile file and generate
+a new clientToken with accessToken (delete the file and login once). Then you
+can still can auto login.
+
+## Testserver
+
+
+
 ## Limitation
 
 #### IP-Bans
@@ -64,7 +91,8 @@ server.
 This project goes out of scope of BungeeCord or Waterfall, so it will be never
 merged into the orginal projects.
 
-X will still track upstream BungeeCord and Waterfall and merge changes as needed.
+UniversalProxy will still track upstream BungeeCord and Waterfall and merge
+changes as needed.
 
 ## Join us
 

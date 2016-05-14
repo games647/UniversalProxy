@@ -18,6 +18,17 @@
     <name>Waterfall-API</name>
     <description>API implemented by the Elastic Portal Suite</description>
 
+    <repositories>
+        <repository>
+            <id>spacehq</id>
+            <url>https://repo.spacehq.org/content/repositories/snapshots/</url>
+        </repository>
+        <repository>
+            <id>spacehq-releases</id>
+            <url>https://repo.spacehq.org/content/repositories/releases/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>io.github.waterfallmc</groupId>
