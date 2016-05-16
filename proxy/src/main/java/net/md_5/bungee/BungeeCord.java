@@ -580,7 +580,7 @@ public class BungeeCord extends ProxyServer
     public ServerInfo getServerInfo(String name)
     {
         ServerInfo serverInfo = getServers().get( name );
-        if ( name != null && name.contains( "\\." ) && serverInfo == null )
+        if ( name != null && name.contains( "." ) && serverInfo == null )
         {
             return new BungeeServerInfo( name, Util.getAddr( name ), "Motd not fetched", false );
         }

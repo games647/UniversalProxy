@@ -153,7 +153,7 @@ public final class UserConnection implements ProxiedPlayer
     };
 
     @Override
-    public void login(UUID clientToken, String accessToken, String email) throws RequestException
+    public AuthenticationService login(UUID clientToken, String accessToken, String email) throws RequestException
     {
         AuthenticationService authService = new AuthenticationService( clientToken.toString() );
         authService.setUsername( email );
@@ -162,10 +162,11 @@ public final class UserConnection implements ProxiedPlayer
 
         //update on success
         this.authService = authService;
+        return authService;
     }
 
     @Override
-    public void login(String email, String password) throws RequestException
+    public AuthenticationService login(String email, String password) throws RequestException
     {
         AuthenticationService authService = new AuthenticationService();
         authService.setUsername( email );
@@ -174,6 +175,7 @@ public final class UserConnection implements ProxiedPlayer
 
         //update on success
         this.authService = authService;
+        return authService;
     }
 
     public void init()

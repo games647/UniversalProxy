@@ -1,5 +1,8 @@
 # UniversalProxy
 
+A fork [Waterfall](https://github.com/WaterfallMC/Waterfall) and
+[BungeeCord](https://github.com/SpigotMC/BungeeCord)
+
 ## Description
 
 This is a BungeeCord/Waterfall fork for a universal revers proxy for the game
@@ -39,14 +42,14 @@ This project is similar to mcleaks.net.
 
 ## How to setup
 
-* Build the complete with Maven "mvn clean install"
-* Go into "PROJECT/bootstrap/" and copy the waterfall.jar file
-* Start a new server using this file
-* Now go into "PROJECT/module/" copy the files from
+1. Build the complete with Maven "mvn clean install"
+2. Go into "PROJECT/bootstrap/" and copy the waterfall.jar file
+3. Start a new server using this file
+4. Now go into "PROJECT/module/" copy the files from
 "/cmd-auth/target/cmd_auth.jar" and "/cmd-server/target/cmd_server.jar"
 into the "/modules/" folder of the server
-* Now restart the server
-* You can now test it ingame using the following commands
+5. Now restart the server
+6. You can now test it ingame using the following commands
 ```/auth clientToken accessToken email```
 and then /server IP/Domain
 
@@ -62,7 +65,8 @@ can still can auto login.
 
 ## Testserver
 
-
+5.230.156.186:25565
+Ingame you can follow from step 6. see above
 
 ## Limitation
 
@@ -76,15 +80,6 @@ connections through this proxy will drop.
 
 The minecraft authentication is made by this proxy. Therefore the server has
 to know the account credentials.
-
-## Want to try it out?
-
-This project is in early state, but you could already try it out. Just go to the
-SeverConnector.java file and edit the email and password. Next build this
-project. The final jar is placed in the bootstrap/target folder.
-
-Now you can start working on it like a normal BungeeCord/Waterfall
-server.
 
 ## Why fork Waterfall?
 
