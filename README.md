@@ -51,7 +51,12 @@ into the "/modules/" folder of the server
 5. Now restart the server
 6. You can now test it ingame using the following commands
 ```/auth clientToken accessToken email```
+example:
+```/auth 2345678-1234-1234-1234-123456789012 1234567893143124515151 example@example.com```
+
 and then /server IP/Domain
+
+If you see the message server is online mode, you are not authenticated
 
 Client token, accessToken and the email can be extracted from the
 launcher_profiles.json file (in your .minecraft folder)
