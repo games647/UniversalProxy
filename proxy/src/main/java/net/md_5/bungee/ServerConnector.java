@@ -1,20 +1,21 @@
 package net.md_5.bungee;
 
+import com.github.steveice10.mc.auth.data.GameProfile;
+import com.github.steveice10.mc.auth.service.SessionService;
 import com.google.common.base.Preconditions;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
-import java.math.BigInteger;
 
+import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.PublicKey;
 import java.util.Arrays;
 import java.util.Queue;
 import java.util.Set;
 import java.util.UUID;
-import javax.crypto.SecretKey;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import javax.crypto.SecretKey;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ProxyServer;
@@ -54,8 +55,8 @@ import net.md_5.bungee.protocol.packet.Respawn;
 import net.md_5.bungee.protocol.packet.ScoreboardObjective;
 import net.md_5.bungee.protocol.packet.SetCompression;
 
-import org.spacehq.mc.auth.data.GameProfile;
-import org.spacehq.mc.auth.service.SessionService;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class ServerConnector extends PacketHandler

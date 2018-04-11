@@ -1,16 +1,18 @@
 package net.md_5.bungee.api.connection;
 
+import com.github.steveice10.mc.auth.exception.request.RequestException;
+import com.github.steveice10.mc.auth.service.AuthenticationService;
+
 import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
+
 import net.md_5.bungee.api.Callback;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.Title;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.config.ServerInfo;
-import org.spacehq.mc.auth.exception.request.RequestException;
-import org.spacehq.mc.auth.service.AuthenticationService;
 
 /**
  * Represents a player who's connection is being connected to somewhere else,

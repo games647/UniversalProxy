@@ -1,8 +1,11 @@
 package net.md_5.bungee;
 
+import com.github.steveice10.mc.auth.exception.request.RequestException;
+import com.github.steveice10.mc.auth.service.AuthenticationService;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableMap;
+
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -10,6 +13,7 @@ import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.util.internal.PlatformDependent;
+
 import java.net.InetSocketAddress;
 import java.util.Collection;
 import java.util.Collections;
@@ -20,10 +24,7 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.UUID;
 import java.util.logging.Level;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+
 import net.md_5.bungee.api.Callback;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.ProxyServer;
@@ -59,8 +60,11 @@ import net.md_5.bungee.protocol.packet.SetCompression;
 import net.md_5.bungee.tab.ServerUnique;
 import net.md_5.bungee.tab.TabList;
 import net.md_5.bungee.util.CaseInsensitiveSet;
-import org.spacehq.mc.auth.exception.request.RequestException;
-import org.spacehq.mc.auth.service.AuthenticationService;
+
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 @RequiredArgsConstructor
 public final class UserConnection implements ProxiedPlayer
