@@ -1,39 +1,47 @@
-# Eclipse stuff
+# UniversalProxy working files
+UniversalProxy/
+
+# Eclipse
 .classpath
 .project
 .settings/
 
-# netbeans
+# NetBeans
 nbproject/
-nbactions.xml
+nb-configuration.xml
 
-# we use maven!
-build.xml
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
 
-# maven
+# Maven
 target/
-dependency-reduced-pom.xml
+pom.xml.versionsBackup
 
-# vim
-.*.sw[a-p]
+# Gradle
+.gradle
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
 
 # various other potential build files
 build/
 bin/
 dist/
 manifest.mf
+*.log
+
+# Vim
+.*.sw[a-p]
+
+# virtual machine crash logs, see https://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
 
 # Mac filesystem dust
-.DS_Store/
+.DS_Store
 
-# intellij
-*.iml
-*.ipr
-*.iws
-.idea/
-
-# other files
-*.log*
-
-# delombok
-*/src/main/lombok

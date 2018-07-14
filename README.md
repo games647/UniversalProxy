@@ -42,12 +42,12 @@ This project is similar to mcleaks.net.
 
 ## How to setup
 
-1. Build the complete with Maven "mvn clean install"
-2. Go into "PROJECT/bootstrap/" and copy the waterfall.jar file
+1. Build the project using the build.sh file (./build.sh)
+2. Go into "UniversalProxy/Waterfall-Proxy/bootstrap/" and copy the waterfall.jar file
 3. Start a new server using this file
-4. Now go into "PROJECT/module/" copy the files from
+4. Now go into "UniversalProxy/Waterfall-Proxy//module/" copy the files from
 "/cmd-auth/target/cmd_auth.jar" and "/cmd-server/target/cmd_server.jar"
-into the "/modules/" folder of the server
+into the "/modules/" folder of the server. (Or symlink it)
 5. Now restart the server
 6. You can now test it ingame using the following commands
 ```/auth clientToken accessToken email```
@@ -56,7 +56,7 @@ example:
 
 and then /server IP/Domain
 
-If you see the message server is online mode, you are not authenticated
+If you see the message "server is online mode", you are not authenticated
 
 Client token, accessToken and the email can be extracted from the
 launcher_profiles.json file (in your .minecraft folder)
@@ -68,10 +68,16 @@ You could work-around this by backing up your launcher profile file and generate
 a new clientToken with accessToken (delete the file and login once). Then you
 can still can auto login.
 
-## Testserver
+## Modify the code
 
-5.230.156.186:25565
-Ingame you can follow from step 6. see above
+If you want to modify the project, follow these steps:
+1. Build the project to generate the base structure
+2. Go into the UniversalProxy/Waterfall-Proxy folder
+3. Modify the things you want to change
+4. Create a PATCH file by commiting the changes **inside the UniversalProxy/Waterfall-Proxy folder**
+5. Move the folder up and run the ./rebuildPatches.sh file 
+6. Do 5 again on the root project path
+7. Now it generates another patch file which can be now commited to and uploaded to this project
 
 ## Limitation
 

@@ -1,0 +1,1645 @@
+From 0e36096bf8bf5ada29910ca9805639022510b25c Mon Sep 17 00:00:00 2001
+From: games647 <games647@users.noreply.github.com>
+Date: Sat, 14 Jul 2018 17:11:40 +0200
+Subject: [PATCH] Add UniversalProxy changes
+
+
+diff --git a/BungeeCord-Patches/0001-POM-Changes.patch b/BungeeCord-Patches/0001-POM-Changes.patch
+index 7a0c06d..285cadc 100644
+--- a/BungeeCord-Patches/0001-POM-Changes.patch
++++ b/BungeeCord-Patches/0001-POM-Changes.patch
+@@ -1,4 +1,4 @@
+-From f9b6981e2774ff0131de9a1d42ce3ff4396f93dc Mon Sep 17 00:00:00 2001
++From 2965d2cf8dd0eebd54d0196a8a32ae82a15e2498 Mon Sep 17 00:00:00 2001
+ From: Tux <write@imaginarycode.com>
+ Date: Thu, 19 May 2016 10:33:31 -0700
+ Subject: [PATCH] POM Changes
+@@ -827,6 +827,3 @@ index 9ecb2612..4b3613fa 100644
+              <version>${project.version}</version>
+              <scope>compile</scope>
+          </dependency>
+--- 
+-2.17.1
+-
+diff --git a/BungeeCord-Patches/0002-Rename-references-from-BungeeCord-to-Waterfall.patch b/BungeeCord-Patches/0002-Rename-references-from-BungeeCord-to-Waterfall.patch
+index 0743282..732b77a 100644
+--- a/BungeeCord-Patches/0002-Rename-references-from-BungeeCord-to-Waterfall.patch
++++ b/BungeeCord-Patches/0002-Rename-references-from-BungeeCord-to-Waterfall.patch
+@@ -1,4 +1,4 @@
+-From a88a7732ffba82dc21753d5cad9f5f1578f7c76e Mon Sep 17 00:00:00 2001
++From a3eb6a3849188aa1799addd5ba64e792191d6028 Mon Sep 17 00:00:00 2001
+ From: Tux <write@imaginarycode.com>
+ Date: Thu, 19 May 2016 11:28:45 -0700
+ Subject: [PATCH] Rename references from BungeeCord to Waterfall
+@@ -113,6 +113,3 @@ index 408312fd..95590b6d 100644
+              boolean restricted = get( "restricted", false, val );
+              InetSocketAddress address = Util.getAddr( addr );
+              ServerInfo info = ProxyServer.getInstance().constructServerInfo( name, address, motd, restricted );
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0003-Add-Waterfall-configuration-files.patch b/BungeeCord-Patches/0003-Add-Waterfall-configuration-files.patch
+index b4cc3dc..4db9323 100644
+--- a/BungeeCord-Patches/0003-Add-Waterfall-configuration-files.patch
++++ b/BungeeCord-Patches/0003-Add-Waterfall-configuration-files.patch
+@@ -1,4 +1,4 @@
+-From 89660a3a2bdcfc95468d053c89a620dbd0626bed Mon Sep 17 00:00:00 2001
++From 0e85ab29f5f5c091734e8e35e17a03f4c412d100 Mon Sep 17 00:00:00 2001
+ From: Techcable <Techcable@techcable.net>
+ Date: Tue, 25 Oct 2016 11:58:37 -0400
+ Subject: [PATCH] Add Waterfall configuration files
+@@ -43,7 +43,7 @@ index 00000000..f9e277dc
+ +    }
+ +}
+ diff --git a/proxy/src/main/java/net/md_5/bungee/BungeeCord.java b/proxy/src/main/java/net/md_5/bungee/BungeeCord.java
+-index 0d41645b..1144ec73 100644
++index 48194798..fca210cd 100644
+ --- a/proxy/src/main/java/net/md_5/bungee/BungeeCord.java
+ +++ b/proxy/src/main/java/net/md_5/bungee/BungeeCord.java
+ @@ -11,6 +11,7 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
+@@ -64,7 +64,7 @@ index 0d41645b..1144ec73 100644
+       * Localization bundle.
+       */
+ diff --git a/proxy/src/main/java/net/md_5/bungee/conf/Configuration.java b/proxy/src/main/java/net/md_5/bungee/conf/Configuration.java
+-index 907246a9..4a55c0e2 100644
++index 1ee82eec..6c722e8b 100644
+ --- a/proxy/src/main/java/net/md_5/bungee/conf/Configuration.java
+ +++ b/proxy/src/main/java/net/md_5/bungee/conf/Configuration.java
+ @@ -24,7 +24,7 @@ import net.md_5.bungee.util.CaseInsensitiveSet;
+@@ -118,6 +118,3 @@ index 95590b6d..1019c307 100644
+          Map<String, Object> permissions = get( "permissions", new HashMap<String, Object>() );
+          if ( permissions.isEmpty() )
+          {
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0004-Configurable-Waterfall-Metrics.patch b/BungeeCord-Patches/0004-Configurable-Waterfall-Metrics.patch
+index 9ac7504..f3da7fa 100644
+--- a/BungeeCord-Patches/0004-Configurable-Waterfall-Metrics.patch
++++ b/BungeeCord-Patches/0004-Configurable-Waterfall-Metrics.patch
+@@ -1,4 +1,4 @@
+-From 49fc7e69aa3d6f00a7ba5fd920b05dbcba2b7cfb Mon Sep 17 00:00:00 2001
++From 156061009d706fcd9f416e7390f0a400f6275f8e Mon Sep 17 00:00:00 2001
+ From: Techcable <Techcable@techcable.net>
+ Date: Thu, 19 May 2016 10:55:20 -0700
+ Subject: [PATCH] Configurable Waterfall Metrics
+@@ -81,6 +81,3 @@ index 95239878..e482e98c 100644
+  
+          // Connect to the website
+          URLConnection connection;
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0005-Fetch-modules-from-the-Waterfall-CI.patch b/BungeeCord-Patches/0005-Fetch-modules-from-the-Waterfall-CI.patch
+index 93a9f27..3f6ced6 100644
+--- a/BungeeCord-Patches/0005-Fetch-modules-from-the-Waterfall-CI.patch
++++ b/BungeeCord-Patches/0005-Fetch-modules-from-the-Waterfall-CI.patch
+@@ -1,4 +1,4 @@
+-From bda34a59361b9de7bbbede5d9aeb30e835f87128 Mon Sep 17 00:00:00 2001
++From 85d1bafbefbd00d229714c766dce13b73c4820f5 Mon Sep 17 00:00:00 2001
+ From: Tux <write@imaginarycode.com>
+ Date: Thu, 19 May 2016 11:34:52 -0700
+ Subject: [PATCH] Fetch modules from the Waterfall CI
+@@ -39,6 +39,3 @@ index 2536435c..e1cf0010 100644
+              System.out.println( "Download complete" );
+          } catch ( IOException ex )
+          {
+--- 
+-2.14.1
+-
+diff --git a/BungeeCord-Patches/0006-Get-rid-of-the-security-manager.patch b/BungeeCord-Patches/0006-Get-rid-of-the-security-manager.patch
+index ea25837..72238ee 100644
+--- a/BungeeCord-Patches/0006-Get-rid-of-the-security-manager.patch
++++ b/BungeeCord-Patches/0006-Get-rid-of-the-security-manager.patch
+@@ -1,4 +1,4 @@
+-From ee84eda36902629e0e7340d0088f80c7c13b888b Mon Sep 17 00:00:00 2001
++From 41fd1daed45634b2af1376f9eb28ef512392f897 Mon Sep 17 00:00:00 2001
+ From: Tux <write@imaginarycode.com>
+ Date: Mon, 25 Jan 2016 01:19:07 -0500
+ Subject: [PATCH] Get rid of the security manager.
+@@ -102,6 +102,3 @@ index 53c81923..00000000
+ -        }
+ -    }
+ -}
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0007-Presize-the-HTTP-response-buffer.patch b/BungeeCord-Patches/0007-Presize-the-HTTP-response-buffer.patch
+index 275f659..fa1fa3e 100644
+--- a/BungeeCord-Patches/0007-Presize-the-HTTP-response-buffer.patch
++++ b/BungeeCord-Patches/0007-Presize-the-HTTP-response-buffer.patch
+@@ -1,4 +1,4 @@
+-From 64569da83643499139a52d19b196ef0643c5d281 Mon Sep 17 00:00:00 2001
++From 416af4c040b835b5787d526c300bf93647a3116f Mon Sep 17 00:00:00 2001
+ From: Tux <write@imaginarycode.com>
+ Date: Wed, 13 Apr 2016 15:17:05 -0400
+ Subject: [PATCH] Presize the HTTP response buffer
+@@ -18,6 +18,3 @@ index 96d0a71d..bac6b1b0 100644
+  
+      @Override
+      public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception
+--- 
+-2.14.1
+-
+diff --git a/BungeeCord-Patches/0008-Don-t-access-a-ByteBuf-s-underlying-array.patch b/BungeeCord-Patches/0008-Don-t-access-a-ByteBuf-s-underlying-array.patch
+index fa25c1a..bed2f82 100644
+--- a/BungeeCord-Patches/0008-Don-t-access-a-ByteBuf-s-underlying-array.patch
++++ b/BungeeCord-Patches/0008-Don-t-access-a-ByteBuf-s-underlying-array.patch
+@@ -1,4 +1,4 @@
+-From fcc7a9df25e9acec9056283d51533eb12f059c85 Mon Sep 17 00:00:00 2001
++From 520186f6295d376f2cd91d3d39a26116308628e4 Mon Sep 17 00:00:00 2001
+ From: Techcable <Techcable@techcable.net>
+ Date: Tue, 3 May 2016 20:31:52 -0700
+ Subject: [PATCH] Don't access a ByteBuf's underlying array
+@@ -85,6 +85,3 @@ index 551ae1e1..be9685b9 100644
+      public static final ChannelInitializer<Channel> SERVER_CHILD = new ChannelInitializer<Channel>()
+      {
+          @Override
+--- 
+-2.17.0.windows.1
+-
+diff --git a/BungeeCord-Patches/0009-Fix-unicode-characters-in-configuration-files.patch b/BungeeCord-Patches/0009-Fix-unicode-characters-in-configuration-files.patch
+index 704fa60..c796091 100644
+--- a/BungeeCord-Patches/0009-Fix-unicode-characters-in-configuration-files.patch
++++ b/BungeeCord-Patches/0009-Fix-unicode-characters-in-configuration-files.patch
+@@ -1,4 +1,4 @@
+-From 71635ee654f9c93b3540ad974b2a82b6309e8b15 Mon Sep 17 00:00:00 2001
++From 66ff9b049bd63190f7680b8f64a4368f85157203 Mon Sep 17 00:00:00 2001
+ From: kamcio96 <k.nadworski@icloud.com>
+ Date: Sat, 21 May 2016 17:17:36 -0600
+ Subject: [PATCH] Fix unicode characters in configuration files
+@@ -52,6 +52,3 @@ index db8aa4be..9258d7dd 100644
+          {
+              return load( reader, defaults );
+          }
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0010-Optimize-uuid-conversions.patch b/BungeeCord-Patches/0010-Optimize-uuid-conversions.patch
+index 66d7137..f75b3e2 100644
+--- a/BungeeCord-Patches/0010-Optimize-uuid-conversions.patch
++++ b/BungeeCord-Patches/0010-Optimize-uuid-conversions.patch
+@@ -1,4 +1,4 @@
+-From e8b04bb099af854160b469e372d2553f63c2c7b6 Mon Sep 17 00:00:00 2001
++From cddaee374e50eeaf88fb52a1321a8c26d027ee84 Mon Sep 17 00:00:00 2001
+ From: Techcable <Techcable@outlook.com>
+ Date: Mon, 14 Mar 2016 15:40:44 -0700
+ Subject: [PATCH] Optimize uuid conversions
+@@ -270,6 +270,3 @@ index 1c65e002..59216860 100644
+      }
+  
+      @Override
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0011-Add-support-for-FML-with-IP-Forwarding-enabled.patch b/BungeeCord-Patches/0011-Add-support-for-FML-with-IP-Forwarding-enabled.patch
+index 9290de0..a0e2512 100644
+--- a/BungeeCord-Patches/0011-Add-support-for-FML-with-IP-Forwarding-enabled.patch
++++ b/BungeeCord-Patches/0011-Add-support-for-FML-with-IP-Forwarding-enabled.patch
+@@ -1,4 +1,4 @@
+-From 8a8bc18e03611469f038d8a3cb57498dc539d045 Mon Sep 17 00:00:00 2001
++From bfc570eaf9be40792cea16e9c970064325251909 Mon Sep 17 00:00:00 2001
+ From: Daniel Naylor <git@drnaylor.co.uk>
+ Date: Tue, 25 Oct 2016 12:23:07 -0400
+ Subject: [PATCH] Add support for FML with IP Forwarding enabled
+@@ -12,7 +12,7 @@ However, there is now at least one Forge coremod that intends to support IP forw
+ No breaking changes occur due to this patch.
+ 
+ diff --git a/proxy/src/main/java/net/md_5/bungee/ServerConnector.java b/proxy/src/main/java/net/md_5/bungee/ServerConnector.java
+-index 8194dbde..6c367c73 100644
++index 67a6d247..af2972f5 100644
+ --- a/proxy/src/main/java/net/md_5/bungee/ServerConnector.java
+ +++ b/proxy/src/main/java/net/md_5/bungee/ServerConnector.java
+ @@ -3,6 +3,7 @@ package net.md_5.bungee;
+@@ -99,6 +99,3 @@ index 6dca2048..f5253b89 100644
+      /**
+       * The FML 1.8 handshake token.
+       */
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0012-Better-unit-tests-for-Chat-API.patch b/BungeeCord-Patches/0012-Better-unit-tests-for-Chat-API.patch
+index 15d0ec6..246e68a 100644
+--- a/BungeeCord-Patches/0012-Better-unit-tests-for-Chat-API.patch
++++ b/BungeeCord-Patches/0012-Better-unit-tests-for-Chat-API.patch
+@@ -1,11 +1,11 @@
+-From 3b892ade0eac384ac47607c81c8f2e8ccb3d95bd Mon Sep 17 00:00:00 2001
++From 667e4d89c337fa750b13349f7797d2511c7fe94a Mon Sep 17 00:00:00 2001
+ From: Tux <write@imaginarycode.com>
+ Date: Thu, 19 May 2016 17:36:31 -0600
+ Subject: [PATCH] Better unit tests for Chat API
+ 
+ 
+ diff --git a/chat/src/test/java/net/md_5/bungee/api/chat/ComponentsTest.java b/chat/src/test/java/net/md_5/bungee/api/chat/ComponentsTest.java
+-index 6eda2a72..22398005 100644
++index 27b5bbea..b60843b5 100644
+ --- a/chat/src/test/java/net/md_5/bungee/api/chat/ComponentsTest.java
+ +++ b/chat/src/test/java/net/md_5/bungee/api/chat/ComponentsTest.java
+ @@ -202,6 +202,26 @@ public class ComponentsTest
+@@ -52,6 +52,3 @@ index 0837c672..38147e2a 100644
+ +        assertEquals( "§fTest string with §f%§f sign", testComponent.toLegacyText() );
+ +    }
+  }
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0013-Don-t-allow-channel-buffers-to-grow-beyond-a-reasona.patch b/BungeeCord-Patches/0013-Don-t-allow-channel-buffers-to-grow-beyond-a-reasona.patch
+index a1787d3..9012f02 100644
+--- a/BungeeCord-Patches/0013-Don-t-allow-channel-buffers-to-grow-beyond-a-reasona.patch
++++ b/BungeeCord-Patches/0013-Don-t-allow-channel-buffers-to-grow-beyond-a-reasona.patch
+@@ -1,4 +1,4 @@
+-From 21915cbd51f2633b3b71c3e784f634d04fd2c081 Mon Sep 17 00:00:00 2001
++From 82010ffc10934122a311374f831f6655fe304dbd Mon Sep 17 00:00:00 2001
+ From: Iceee <andrew@optic.tv>
+ Date: Mon, 6 Jul 2015 18:59:29 -0500
+ Subject: [PATCH] Don't allow channel buffers to grow beyond a reasonable limit
+@@ -17,6 +17,3 @@ index 6a4cc14c..b9cf1ee2 100644
+                      .childAttr( PipelineUtils.LISTENER, info )
+                      .childHandler( PipelineUtils.SERVER_CHILD )
+                      .group( eventLoops )
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0014-Allow-removing-servers-or-changing-addresses-on-relo.patch b/BungeeCord-Patches/0014-Allow-removing-servers-or-changing-addresses-on-relo.patch
+index 7a58576..82f7b94 100644
+--- a/BungeeCord-Patches/0014-Allow-removing-servers-or-changing-addresses-on-relo.patch
++++ b/BungeeCord-Patches/0014-Allow-removing-servers-or-changing-addresses-on-relo.patch
+@@ -1,4 +1,4 @@
+-From 9366d5ee793cf91365eeb4dbf38c6e8be6b6c3ac Mon Sep 17 00:00:00 2001
++From 4730c5b8d8a13fda297bb054d3dea3bb4c03d1de Mon Sep 17 00:00:00 2001
+ From: Techcable <Techcable@outlook.com>
+ Date: Thu, 28 Jan 2016 15:13:29 -0700
+ Subject: [PATCH] Allow removing servers or changing addresses on reload
+@@ -71,6 +71,3 @@ index 6c722e8b..3a73a870 100644
+                  }
+              }
+          }
+--- 
+-2.17.0.windows.1
+-
+diff --git a/BungeeCord-Patches/0015-Enable-TCP_NODELAY.patch b/BungeeCord-Patches/0015-Enable-TCP_NODELAY.patch
+index af948bf..7ebb6cb 100644
+--- a/BungeeCord-Patches/0015-Enable-TCP_NODELAY.patch
++++ b/BungeeCord-Patches/0015-Enable-TCP_NODELAY.patch
+@@ -1,4 +1,4 @@
+-From 974ef96fabc5835a6385b76a76a8cdf8891b81a2 Mon Sep 17 00:00:00 2001
++From 322ed3161236a79bc6f1c267b7b4222282b21d72 Mon Sep 17 00:00:00 2001
+ From: Harry <me@harry5573.uk>
+ Date: Sun, 24 Jan 2016 15:13:29 -0700
+ Subject: [PATCH] Enable TCP_NODELAY.
+@@ -17,6 +17,3 @@ index be9685b9..b0bbc1d7 100644
+              ch.config().setAllocator( PooledByteBufAllocator.DEFAULT );
+              ch.config().setWriteBufferWaterMark( MARK );
+  
+--- 
+-2.17.0.windows.1
+-
+diff --git a/BungeeCord-Patches/0016-Micro-optimizations.patch b/BungeeCord-Patches/0016-Micro-optimizations.patch
+index 4444cc9..b4ef343 100644
+--- a/BungeeCord-Patches/0016-Micro-optimizations.patch
++++ b/BungeeCord-Patches/0016-Micro-optimizations.patch
+@@ -1,4 +1,4 @@
+-From 9553db26ff87855c70317e4ca59f4d5213fb13ae Mon Sep 17 00:00:00 2001
++From 2a1c2685be34c4431a6044cb2a0cc13064cb8050 Mon Sep 17 00:00:00 2001
+ From: Tux <write@imaginarycode.com>
+ Date: Tue, 19 Jan 2016 15:13:29 -0700
+ Subject: [PATCH] Micro-optimizations
+@@ -78,6 +78,3 @@ index 9ea61319..565e6b0e 100644
+              ByteArrayDataOutput out = ByteStreams.newDataOutput();
+              String subChannel = in.readUTF();
+  
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0017-Allow-invalid-packet-ids-for-forge-servers.patch b/BungeeCord-Patches/0017-Allow-invalid-packet-ids-for-forge-servers.patch
+index 8246a1d..7be60d4 100644
+--- a/BungeeCord-Patches/0017-Allow-invalid-packet-ids-for-forge-servers.patch
++++ b/BungeeCord-Patches/0017-Allow-invalid-packet-ids-for-forge-servers.patch
+@@ -1,4 +1,4 @@
+-From 62da2c1697d08e1e68415ac453a0391c0a58e6f8 Mon Sep 17 00:00:00 2001
++From 5496dbabbe5c9cfde628facb43f0590c8621375b Mon Sep 17 00:00:00 2001
+ From: Techcable <Techcable@techcable.net>
+ Date: Thu, 19 May 2016 17:09:22 -0600
+ Subject: [PATCH] Allow invalid packet ids for forge servers
+@@ -9,7 +9,7 @@ Vanilla servers still error on negative/invalid packets.
+ Original issue: https://github.com/WaterfallMC/Waterfall-Old/issues/11
+ 
+ diff --git a/protocol/src/main/java/net/md_5/bungee/protocol/MinecraftDecoder.java b/protocol/src/main/java/net/md_5/bungee/protocol/MinecraftDecoder.java
+-index e7cb3803..447eaae7 100644
++index ea44573d..5b32effe 100644
+ --- a/protocol/src/main/java/net/md_5/bungee/protocol/MinecraftDecoder.java
+ +++ b/protocol/src/main/java/net/md_5/bungee/protocol/MinecraftDecoder.java
+ @@ -16,6 +16,14 @@ public class MinecraftDecoder extends MessageToMessageDecoder<ByteBuf>
+@@ -66,7 +66,7 @@ index cd065631..3f6b1766 100644
+                  throw new BadPacketException( "Packet with id " + id + " outside of range " );
+              }
+ diff --git a/proxy/src/main/java/net/md_5/bungee/ServerConnector.java b/proxy/src/main/java/net/md_5/bungee/ServerConnector.java
+-index 6c367c73..6df62b22 100644
++index af2972f5..68fef8a4 100644
+ --- a/proxy/src/main/java/net/md_5/bungee/ServerConnector.java
+ +++ b/proxy/src/main/java/net/md_5/bungee/ServerConnector.java
+ @@ -30,7 +30,9 @@ import net.md_5.bungee.forge.ForgeUtils;
+@@ -121,6 +121,3 @@ index 847a3eca..27ee21f2 100644
+          if ( ints[packetId] )
+          {
+              rewriteInt( packet, oldId, newId, readerIndex + packetIdLength );
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0018-Resolve-sendData-deadlocks.patch b/BungeeCord-Patches/0018-Resolve-sendData-deadlocks.patch
+index 56f3157..d349cba 100644
+--- a/BungeeCord-Patches/0018-Resolve-sendData-deadlocks.patch
++++ b/BungeeCord-Patches/0018-Resolve-sendData-deadlocks.patch
+@@ -1,4 +1,4 @@
+-From 2c34f23a707a2209a1c67f64bfab950448acc9a0 Mon Sep 17 00:00:00 2001
++From e8f66e88b210ee038f4e4a4a4e7803a9ff437e05 Mon Sep 17 00:00:00 2001
+ From: Tux <write@imaginarycode.com>
+ Date: Fri, 12 Feb 2016 23:55:53 -0500
+ Subject: [PATCH] Resolve sendData() deadlocks
+@@ -42,6 +42,3 @@ index 89c8f48f..9756c09c 100644
+      }
+  
+      @Override
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0019-Add-basic-support-for-configurable-tab-complete-thro.patch b/BungeeCord-Patches/0019-Add-basic-support-for-configurable-tab-complete-thro.patch
+index 0e8b462..4685222 100644
+--- a/BungeeCord-Patches/0019-Add-basic-support-for-configurable-tab-complete-thro.patch
++++ b/BungeeCord-Patches/0019-Add-basic-support-for-configurable-tab-complete-thro.patch
+@@ -1,4 +1,4 @@
+-From f01d605e461267209d8008ae203ac107a6e82679 Mon Sep 17 00:00:00 2001
++From 1790742a91737ea6a44e4d9d0855a3a622a45972 Mon Sep 17 00:00:00 2001
+ From: Johannes Donath <johannesd@torchmind.com>
+ Date: Sat, 4 Jul 2015 06:31:33 +0200
+ Subject: [PATCH] Add basic support for configurable tab-complete throttling
+@@ -64,7 +64,7 @@ index 056b8040..e56d3591 100644
+ +    }
+  }
+ diff --git a/proxy/src/main/java/net/md_5/bungee/connection/UpstreamBridge.java b/proxy/src/main/java/net/md_5/bungee/connection/UpstreamBridge.java
+-index 19a52458..ccdeaed1 100644
++index 92d22502..6d0eb7e9 100644
+ --- a/proxy/src/main/java/net/md_5/bungee/connection/UpstreamBridge.java
+ +++ b/proxy/src/main/java/net/md_5/bungee/connection/UpstreamBridge.java
+ @@ -33,6 +33,8 @@ public class UpstreamBridge extends PacketHandler
+@@ -93,6 +93,3 @@ index 19a52458..ccdeaed1 100644
+          List<String> suggestions = new ArrayList<>();
+  
+          if ( tabComplete.getCursor().startsWith( "/" ) )
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0020-Don-t-create-a-new-KickStringWriter-for-each-new-con.patch b/BungeeCord-Patches/0020-Don-t-create-a-new-KickStringWriter-for-each-new-con.patch
+index 0faff4a..20837ed 100644
+--- a/BungeeCord-Patches/0020-Don-t-create-a-new-KickStringWriter-for-each-new-con.patch
++++ b/BungeeCord-Patches/0020-Don-t-create-a-new-KickStringWriter-for-each-new-con.patch
+@@ -1,4 +1,4 @@
+-From cd05bb628606c9a86ce649ea90d1ceb198d1f21d Mon Sep 17 00:00:00 2001
++From 423ade246d42c4b7e1ad653d3ebc4f4f014bbb70 Mon Sep 17 00:00:00 2001
+ From: Harry <me@harry5573.uk>
+ Date: Tue, 26 Jan 2016 01:01:57 +0000
+ Subject: [PATCH] Don't create a new KickStringWriter for each new connection.
+@@ -41,6 +41,3 @@ index b0bbc1d7..0cad5c89 100644
+  
+      private static boolean epoll;
+  
+--- 
+-2.14.1
+-
+diff --git a/BungeeCord-Patches/0021-Optional-server-list-ping-logging.patch b/BungeeCord-Patches/0021-Optional-server-list-ping-logging.patch
+index 00a0ebd..9f908bc 100644
+--- a/BungeeCord-Patches/0021-Optional-server-list-ping-logging.patch
++++ b/BungeeCord-Patches/0021-Optional-server-list-ping-logging.patch
+@@ -1,4 +1,4 @@
+-From 39ee1270efb5adc9ff6e38b7e50824b5cda6d97d Mon Sep 17 00:00:00 2001
++From b79732ce29f4b734782a5e36810b44cefdfbc4a4 Mon Sep 17 00:00:00 2001
+ From: Janmm14 <computerjanimaus@yahoo.de>
+ Date: Sat, 12 Dec 2015 23:43:30 +0100
+ Subject: [PATCH] Optional server list ping logging.
+@@ -133,6 +133,3 @@ index 6d0eb7e9..9fb20de1 100644
+ +        return "[" + con.getAddress() + "|" + con.getName() + "] -> UpstreamBridge";
+      }
+  }
+--- 
+-2.17.0.windows.1
+-
+diff --git a/BungeeCord-Patches/0022-Add-a-property-to-accept-invalid-ping-packets.patch b/BungeeCord-Patches/0022-Add-a-property-to-accept-invalid-ping-packets.patch
+index f10803f..ca7eead 100644
+--- a/BungeeCord-Patches/0022-Add-a-property-to-accept-invalid-ping-packets.patch
++++ b/BungeeCord-Patches/0022-Add-a-property-to-accept-invalid-ping-packets.patch
+@@ -1,4 +1,4 @@
+-From ec155caf85fc6f5ef2f152733055ee2215b2e666 Mon Sep 17 00:00:00 2001
++From b22c15a9453f6c94a2ffe7cbe7665461a02d0811 Mon Sep 17 00:00:00 2001
+ From: Techcable <Techcable@outlook.com>
+ Date: Sun, 7 Feb 2016 00:01:19 -0700
+ Subject: [PATCH] Add a property to accept invalid ping packets
+@@ -28,6 +28,3 @@ index 1c764f52..ba3d5204 100644
+          unsafe.sendPacket( ping );
+          disconnect( "" );
+      }
+--- 
+-2.16.3
+-
+diff --git a/BungeeCord-Patches/0023-Use-a-worker-and-a-boss-event-loop-group.patch b/BungeeCord-Patches/0023-Use-a-worker-and-a-boss-event-loop-group.patch
+index 59d6c73..57b48bb 100644
+--- a/BungeeCord-Patches/0023-Use-a-worker-and-a-boss-event-loop-group.patch
++++ b/BungeeCord-Patches/0023-Use-a-worker-and-a-boss-event-loop-group.patch
+@@ -1,4 +1,4 @@
+-From 0449711c6f75a43eac964254b8e8fa6cab2d3bc9 Mon Sep 17 00:00:00 2001
++From cf7bd31d305d33c33b39f99ad293627e2687b96c Mon Sep 17 00:00:00 2001
+ From: kamcio96 <k.nadworski@icloud.com>
+ Date: Mon, 14 Mar 2016 16:07:20 -0700
+ Subject: [PATCH] Use a worker and a boss event loop group.
+@@ -82,6 +82,3 @@ index 9756c09c..648cd273 100644
+                  .handler( PipelineUtils.BASE )
+                  .option( ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000 ) // TODO: Configurable
+                  .remoteAddress( getAddress() )
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0024-Better-Decompression-Sanity.patch b/BungeeCord-Patches/0024-Better-Decompression-Sanity.patch
+index 8cb7a66..ad95ec5 100644
+--- a/BungeeCord-Patches/0024-Better-Decompression-Sanity.patch
++++ b/BungeeCord-Patches/0024-Better-Decompression-Sanity.patch
+@@ -1,4 +1,4 @@
+-From 5ee7b32fa3c3171ded4bb8d10b47620d202c5f46 Mon Sep 17 00:00:00 2001
++From bd2e1533c66847aa452b3bec7d3161f34cfa79a9 Mon Sep 17 00:00:00 2001
+ From: Techcable <Techcable@techcable.net>
+ Date: Fri, 18 Mar 2016 10:53:24 -0700
+ Subject: [PATCH] Better Decompression Sanity
+@@ -57,6 +57,3 @@ index 71df1fd5..4882b8ed 100644
+          }
+          if ( compressionThreshold == -1 )
+          {
+--- 
+-2.14.3
+-
+diff --git a/BungeeCord-Patches/0025-Validate-that-chat-messages-are-non-blank.patch b/BungeeCord-Patches/0025-Validate-that-chat-messages-are-non-blank.patch
+index ec89f64..4955e05 100644
+--- a/BungeeCord-Patches/0025-Validate-that-chat-messages-are-non-blank.patch
++++ b/BungeeCord-Patches/0025-Validate-that-chat-messages-are-non-blank.patch
+@@ -1,4 +1,4 @@
+-From 438e3698ce253ec55958ceb5bc5e91b94aea6f2e Mon Sep 17 00:00:00 2001
++From 85c01f37eed7eb45a16e2f9b0f4de950429f5178 Mon Sep 17 00:00:00 2001
+ From: Tux <write@imaginarycode.com>
+ Date: Tue, 25 Oct 2016 12:34:41 -0400
+ Subject: [PATCH] Validate that chat messages are non-blank
+@@ -33,7 +33,7 @@ index 00000000..940ad806
+ +    }
+ +}
+ diff --git a/proxy/src/main/java/net/md_5/bungee/connection/UpstreamBridge.java b/proxy/src/main/java/net/md_5/bungee/connection/UpstreamBridge.java
+-index 742ff503..b2513e93 100644
++index 9fb20de1..09b1de2b 100644
+ --- a/proxy/src/main/java/net/md_5/bungee/connection/UpstreamBridge.java
+ +++ b/proxy/src/main/java/net/md_5/bungee/connection/UpstreamBridge.java
+ @@ -1,6 +1,7 @@
+@@ -52,6 +52,3 @@ index 742ff503..b2513e93 100644
+  
+          ChatEvent chatEvent = new ChatEvent( con, con.getServer(), chat.getMessage() );
+          if ( !bungee.getPluginManager().callEvent( chatEvent ).isCancelled() )
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0026-Reduce-the-overhead-of-lots-and-lots-of-teams-with-t.patch b/BungeeCord-Patches/0026-Reduce-the-overhead-of-lots-and-lots-of-teams-with-t.patch
+index 8e8716f..438e5ad 100644
+--- a/BungeeCord-Patches/0026-Reduce-the-overhead-of-lots-and-lots-of-teams-with-t.patch
++++ b/BungeeCord-Patches/0026-Reduce-the-overhead-of-lots-and-lots-of-teams-with-t.patch
+@@ -1,4 +1,4 @@
+-From 8aed545ad60c51be4fd1693292c0a6717c101508 Mon Sep 17 00:00:00 2001
++From df102b5b2b30fc4ab1a94ba483c90d56dad7af95 Mon Sep 17 00:00:00 2001
+ From: Techcable <Techcable@techcable.net>
+ Date: Mon, 25 Apr 2016 23:46:00 -0700
+ Subject: [PATCH] Reduce the overhead of lots and lots of teams with the same
+@@ -266,6 +266,3 @@ index 00000000..5aa306a1
+ +    }
+ +
+ +}
+--- 
+-2.14.1
+-
+diff --git a/BungeeCord-Patches/0027-Better-debug-checks.patch b/BungeeCord-Patches/0027-Better-debug-checks.patch
+index c2703a4..e247f0c 100644
+--- a/BungeeCord-Patches/0027-Better-debug-checks.patch
++++ b/BungeeCord-Patches/0027-Better-debug-checks.patch
+@@ -1,4 +1,4 @@
+-From 0e83cd9e923f0b05a17feab69dd80b244ee84373 Mon Sep 17 00:00:00 2001
++From a8815baf63e2847c016d5eaa4750014131304e7e Mon Sep 17 00:00:00 2001
+ From: Techcable <Techcable@techcable.net>
+ Date: Wed, 6 Apr 2016 23:46:00 -0700
+ Subject: [PATCH] Better debug checks
+@@ -17,6 +17,3 @@ index 3f6b1766..a568d472 100644
+  
+              return protocolData.packetMap.get( packet );
+          }
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0028-Add-dynamic-server-addition-removal-api.patch b/BungeeCord-Patches/0028-Add-dynamic-server-addition-removal-api.patch
+index 569470e..57b2715 100644
+--- a/BungeeCord-Patches/0028-Add-dynamic-server-addition-removal-api.patch
++++ b/BungeeCord-Patches/0028-Add-dynamic-server-addition-removal-api.patch
+@@ -1,4 +1,4 @@
+-From 554c73d20389ff56690fcb82bf8eb5f00ba78d5d Mon Sep 17 00:00:00 2001
++From 9ee27f7be4a5413514b199275544331825fa3bf8 Mon Sep 17 00:00:00 2001
+ From: Troy Frew <fuzzy_bot@arenaga.me>
+ Date: Wed, 29 Jun 2016 04:29:25 +0200
+ Subject: [PATCH] Add dynamic server addition/removal api.
+@@ -297,6 +297,3 @@ index 3a73a870..d3f0b2d8 100644
+ +    }
+ +    // Waterfall end
+  }
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0029-Don-t-send-KICK-packets-while-in-HANDSHAKE-state.patch b/BungeeCord-Patches/0029-Don-t-send-KICK-packets-while-in-HANDSHAKE-state.patch
+index 1d09a6e..b2fcfe5 100644
+--- a/BungeeCord-Patches/0029-Don-t-send-KICK-packets-while-in-HANDSHAKE-state.patch
++++ b/BungeeCord-Patches/0029-Don-t-send-KICK-packets-while-in-HANDSHAKE-state.patch
+@@ -1,4 +1,4 @@
+-From 02f89ab7ae7b288cc0fbd2494b7a7bfb90330ce6 Mon Sep 17 00:00:00 2001
++From 88606b3ea8d330f93777d66881691134d5411a21 Mon Sep 17 00:00:00 2001
+ From: Techcable <Techcable@techcable.net>
+ Date: Mon, 6 Jun 2016 13:36:10 -0600
+ Subject: [PATCH] Don't send KICK packets while in HANDSHAKE state
+@@ -26,6 +26,3 @@ index ba3d5204..14929879 100644
+          {
+              ch.delayedClose( new Kick( ComponentSerializer.toString( reason ) ) );
+          } else
+--- 
+-2.16.3
+-
+diff --git a/BungeeCord-Patches/0030-Improve-ServerKickEvent.patch b/BungeeCord-Patches/0030-Improve-ServerKickEvent.patch
+index ece04a7..91c06a6 100644
+--- a/BungeeCord-Patches/0030-Improve-ServerKickEvent.patch
++++ b/BungeeCord-Patches/0030-Improve-ServerKickEvent.patch
+@@ -1,4 +1,4 @@
+-From dd1d2c326ff05dd227612b43a7dc72f7cafd47bd Mon Sep 17 00:00:00 2001
++From 1c993e15796af197637259ecfe6633f47b69c32b Mon Sep 17 00:00:00 2001
+ From: Nathan Poirier <nathan@poirier.io>
+ Date: Tue, 28 Jun 2016 23:00:49 -0500
+ Subject: [PATCH] Improve ServerKickEvent
+@@ -62,7 +62,7 @@ index 0e1ef5c4..ee63732d 100644
+      @Deprecated
+      public String getKickReason()
+ diff --git a/proxy/src/main/java/net/md_5/bungee/ServerConnector.java b/proxy/src/main/java/net/md_5/bungee/ServerConnector.java
+-index 972c70ec..1213c206 100644
++index 817ec3e1..9c6fa440 100644
+ --- a/proxy/src/main/java/net/md_5/bungee/ServerConnector.java
+ +++ b/proxy/src/main/java/net/md_5/bungee/ServerConnector.java
+ @@ -315,7 +315,7 @@ public class ServerConnector extends PacketHandler
+@@ -145,6 +145,3 @@ index 085a4e60..c6da6c47 100644
+          if ( event.isCancelled() && event.getCancelServer() != null )
+          {
+              con.connectNow( event.getCancelServer(), ServerConnectEvent.Reason.KICK_REDIRECT );
+--- 
+-2.16.3
+-
+diff --git a/BungeeCord-Patches/0031-Configurable-server-version-in-ping-response.patch b/BungeeCord-Patches/0031-Configurable-server-version-in-ping-response.patch
+index e300a68..d1a9b7a 100644
+--- a/BungeeCord-Patches/0031-Configurable-server-version-in-ping-response.patch
++++ b/BungeeCord-Patches/0031-Configurable-server-version-in-ping-response.patch
+@@ -1,4 +1,4 @@
+-From 16f5603904b7ec61c3982d44b08f2a9e0541f81e Mon Sep 17 00:00:00 2001
++From c9654eb2842b814c69f0a8b3d174cce96f0b2f14 Mon Sep 17 00:00:00 2001
+ From: Troy Frew <fuzzy_bot@arenaga.me>
+ Date: Wed, 29 Jun 2016 13:56:57 -0500
+ Subject: [PATCH] Configurable server version in ping response
+@@ -71,6 +71,3 @@ index af84795f..6ddb2cb7 100644
+      }
+  
+      @Override
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0032-Add-timeout-variant-to-connect-methods.patch b/BungeeCord-Patches/0032-Add-timeout-variant-to-connect-methods.patch
+index b974f8d..d9987c2 100644
+--- a/BungeeCord-Patches/0032-Add-timeout-variant-to-connect-methods.patch
++++ b/BungeeCord-Patches/0032-Add-timeout-variant-to-connect-methods.patch
+@@ -1,4 +1,4 @@
+-From aa1ec62226004b9135a87762e7530133eaa5e9ee Mon Sep 17 00:00:00 2001
++From 22236e61aa1281b857453331c44b6d6dc87aa1d6 Mon Sep 17 00:00:00 2001
+ From: Ichbinjoe <joe@ibj.io>
+ Date: Sat, 16 Jul 2016 20:44:01 -0400
+ Subject: [PATCH] Add timeout variant to connect methods
+@@ -113,6 +113,3 @@ index 61502ea8..8344a9b6 100644
+                  .remoteAddress( target.getAddress() );
+          // Windows is bugged, multi homed users will just have to live with random connecting IPs
+          if ( getPendingConnection().getListener().isSetLocalAddress() && !PlatformDependent.isWindows() )
+--- 
+-2.16.3
+-
+diff --git a/BungeeCord-Patches/0033-Proxy-query-event.patch b/BungeeCord-Patches/0033-Proxy-query-event.patch
+index 035192b..da03ead 100644
+--- a/BungeeCord-Patches/0033-Proxy-query-event.patch
++++ b/BungeeCord-Patches/0033-Proxy-query-event.patch
+@@ -1,4 +1,4 @@
+-From 99e0f78518b8579d4b8bc783f3ec1384af8e8db3 Mon Sep 17 00:00:00 2001
++From c1449db7eae844d35ad4ab20b83e6476a4cfafef Mon Sep 17 00:00:00 2001
+ From: minecrafter <unknown@unknown>
+ Date: Sun, 3 Jul 2016 04:03:21 -0400
+ Subject: [PATCH] Proxy query event
+@@ -213,6 +213,3 @@ index 79d6886a..a72cfd92 100644
+                  out.writeByte( 0x00 ); // Null
+              } else
+              {
+--- 
+-2.14.1
+-
+diff --git a/BungeeCord-Patches/0034-Dump-the-raw-hex-of-a-packet-on-a-decoding-error.patch b/BungeeCord-Patches/0034-Dump-the-raw-hex-of-a-packet-on-a-decoding-error.patch
+index dc29bbb..1a05610 100644
+--- a/BungeeCord-Patches/0034-Dump-the-raw-hex-of-a-packet-on-a-decoding-error.patch
++++ b/BungeeCord-Patches/0034-Dump-the-raw-hex-of-a-packet-on-a-decoding-error.patch
+@@ -1,11 +1,11 @@
+-From 046d135d0187f3d739afe48ff92eea47df55541e Mon Sep 17 00:00:00 2001
++From 8c47cd2c46f0c4f90edd907f14ebbd10bda1edc8 Mon Sep 17 00:00:00 2001
+ From: Techcable <Techcable@techcable.net>
+ Date: Thu, 4 Aug 2016 19:30:49 -0700
+ Subject: [PATCH] Dump the raw hex of a packet on a decoding error
+ 
+ 
+ diff --git a/protocol/src/main/java/net/md_5/bungee/protocol/MinecraftDecoder.java b/protocol/src/main/java/net/md_5/bungee/protocol/MinecraftDecoder.java
+-index 447eaae7..0b780e2e 100644
++index 5b32effe..9e9ea49c 100644
+ --- a/protocol/src/main/java/net/md_5/bungee/protocol/MinecraftDecoder.java
+ +++ b/protocol/src/main/java/net/md_5/bungee/protocol/MinecraftDecoder.java
+ @@ -1,7 +1,9 @@
+@@ -52,6 +52,3 @@ index 447eaae7..0b780e2e 100644
+          } finally
+          {
+              if ( slice != null )
+--- 
+-2.14.1
+-
+diff --git a/BungeeCord-Patches/0035-Fix-potion-race-condition-on-Forge-1.8.9.patch b/BungeeCord-Patches/0035-Fix-potion-race-condition-on-Forge-1.8.9.patch
+index 9d87516..021f704 100644
+--- a/BungeeCord-Patches/0035-Fix-potion-race-condition-on-Forge-1.8.9.patch
++++ b/BungeeCord-Patches/0035-Fix-potion-race-condition-on-Forge-1.8.9.patch
+@@ -1,4 +1,4 @@
+-From 58fd8c6129c3d7a113d43f5afec755f6dee0d334 Mon Sep 17 00:00:00 2001
++From 1fc44c438cca62a05bb29941380181e26cc08480 Mon Sep 17 00:00:00 2001
+ From: Aaron Hill <aa1ronham@gmail.com>
+ Date: Thu, 15 Sep 2016 22:38:37 +0200
+ Subject: [PATCH] Fix potion race condition on Forge 1.8.9
+@@ -270,6 +270,3 @@ index 0d683856..c1272da3 100644
+      /**
+       * Sends the server mod list to the client, or stores it for sending later.
+       *
+--- 
+-2.17.0.windows.1
+-
+diff --git a/BungeeCord-Patches/0036-Optionally-use-async-Netty-DNS-resolver.patch b/BungeeCord-Patches/0036-Optionally-use-async-Netty-DNS-resolver.patch
+index 50950c5..738a512 100644
+--- a/BungeeCord-Patches/0036-Optionally-use-async-Netty-DNS-resolver.patch
++++ b/BungeeCord-Patches/0036-Optionally-use-async-Netty-DNS-resolver.patch
+@@ -1,4 +1,4 @@
+-From 1db05e22c7bea406885eae04e9df5f1f97407c10 Mon Sep 17 00:00:00 2001
++From e86ab64faf52f7318c24bc85bb77cd206522e6b4 Mon Sep 17 00:00:00 2001
+ From: Tux <write@imaginarycode.com>
+ Date: Wed, 21 Dec 2016 03:13:03 -0500
+ Subject: [PATCH] Optionally use async Netty DNS resolver
+@@ -22,7 +22,7 @@ index a4436141..43519ce1 100644
+  
+      /**
+ diff --git a/proxy/pom.xml b/proxy/pom.xml
+-index 7aedbc45..1a5d036d 100644
++index 0536e868..1c22043b 100644
+ --- a/proxy/pom.xml
+ +++ b/proxy/pom.xml
+ @@ -41,6 +41,14 @@
+@@ -169,6 +169,3 @@ index 0cad5c89..3af6a1db 100644
+      {
+          return epoll ? EpollDatagramChannel.class : NioDatagramChannel.class;
+      }
+--- 
+-2.14.1
+-
+diff --git a/BungeeCord-Patches/0037-Security-enhancements-for-EncryptionUtil.patch b/BungeeCord-Patches/0037-Security-enhancements-for-EncryptionUtil.patch
+index d1b57d8..820e550 100644
+--- a/BungeeCord-Patches/0037-Security-enhancements-for-EncryptionUtil.patch
++++ b/BungeeCord-Patches/0037-Security-enhancements-for-EncryptionUtil.patch
+@@ -1,4 +1,4 @@
+-From cfeb2afa090f3486d98dd8a83120756acb97e884 Mon Sep 17 00:00:00 2001
++From c262cb1bc65aefe82ec79190ada72e46e3a2cac6 Mon Sep 17 00:00:00 2001
+ From: Tux <write@imaginarycode.com>
+ Date: Wed, 21 Dec 2016 04:07:26 -0500
+ Subject: [PATCH] Security enhancements for EncryptionUtil
+@@ -6,7 +6,7 @@ Subject: [PATCH] Security enhancements for EncryptionUtil
+ Use a constant-time comparison in getSecret() and use SecureRandom for EncryptionRequest.
+ 
+ diff --git a/proxy/src/main/java/net/md_5/bungee/EncryptionUtil.java b/proxy/src/main/java/net/md_5/bungee/EncryptionUtil.java
+-index 871e4ad0..622a21da 100644
++index 0b4732cd..e1ff4afb 100644
+ --- a/proxy/src/main/java/net/md_5/bungee/EncryptionUtil.java
+ +++ b/proxy/src/main/java/net/md_5/bungee/EncryptionUtil.java
+ @@ -27,7 +27,7 @@ import net.md_5.bungee.protocol.packet.EncryptionRequest;
+@@ -27,6 +27,3 @@ index 871e4ad0..622a21da 100644
+          {
+              throw new IllegalStateException( "Key pairs do not match!" );
+          }
+--- 
+-2.14.1
+-
+diff --git a/BungeeCord-Patches/0038-Improve-outdated-build-message.patch b/BungeeCord-Patches/0038-Improve-outdated-build-message.patch
+index ef9cb1f..c3cd149 100644
+--- a/BungeeCord-Patches/0038-Improve-outdated-build-message.patch
++++ b/BungeeCord-Patches/0038-Improve-outdated-build-message.patch
+@@ -1,4 +1,4 @@
+-From 1b4c278288883e71acbd3e6ed3b67cdfd9cacbf8 Mon Sep 17 00:00:00 2001
++From d4e320783e75929f7147ea4dab993b561bba73ae Mon Sep 17 00:00:00 2001
+ From: Jamie Mansfield <dev@jamierocks.uk>
+ Date: Sat, 10 Jun 2017 20:56:02 +0100
+ Subject: [PATCH] Improve outdated build message
+@@ -21,6 +21,3 @@ index 11526c9c..2efe7211 100644
+                  System.err.println( "*** Server will start in 10 seconds ***" );
+                  Thread.sleep( TimeUnit.SECONDS.toMillis( 10 ) );
+              }
+--- 
+-2.14.1
+-
+diff --git a/BungeeCord-Patches/0039-Fix-some-forge-plugin-message-packets-not-being-forw.patch b/BungeeCord-Patches/0039-Fix-some-forge-plugin-message-packets-not-being-forw.patch
+index 9f741c3..83804fb 100644
+--- a/BungeeCord-Patches/0039-Fix-some-forge-plugin-message-packets-not-being-forw.patch
++++ b/BungeeCord-Patches/0039-Fix-some-forge-plugin-message-packets-not-being-forw.patch
+@@ -1,4 +1,4 @@
+-From 01540488bfb93de14211d9b22f8cdfc2ac62dee5 Mon Sep 17 00:00:00 2001
++From 67e0df59a4ce65af8c29461fdfc275e674525c58 Mon Sep 17 00:00:00 2001
+ From: Daniel Naylor <git@drnaylor.co.uk>
+ Date: Mon, 17 Jul 2017 20:24:17 +0100
+ Subject: [PATCH] Fix some forge plugin message packets not being forwarded
+@@ -54,6 +54,3 @@ index 3fe5ec5f..a0c07874 100644
+          {
+              synchronized ( packetQueue )
+              {
+--- 
+-2.14.1
+-
+diff --git a/BungeeCord-Patches/0040-Use-Log4j2-for-logging-and-TerminalConsoleAppender-f.patch b/BungeeCord-Patches/0040-Use-Log4j2-for-logging-and-TerminalConsoleAppender-f.patch
+index 9e93759..f5e780e 100644
+--- a/BungeeCord-Patches/0040-Use-Log4j2-for-logging-and-TerminalConsoleAppender-f.patch
++++ b/BungeeCord-Patches/0040-Use-Log4j2-for-logging-and-TerminalConsoleAppender-f.patch
+@@ -1,4 +1,4 @@
+-From 838c64762f41da5e8e81fe8cb973edc24a19b2db Mon Sep 17 00:00:00 2001
++From 2ac440d53881046a0002d463d32af64c21542a40 Mon Sep 17 00:00:00 2001
+ From: Minecrell <dev@minecrell.net>
+ Date: Fri, 22 Sep 2017 12:46:47 +0200
+ Subject: [PATCH] Use Log4j2 for logging and TerminalConsoleAppender for
+@@ -505,6 +505,3 @@ index 10366c88..8c5cc949 100644
+              return;
+          }
+  
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0041-Handle-plugin-prefixes-using-Log4J.patch b/BungeeCord-Patches/0041-Handle-plugin-prefixes-using-Log4J.patch
+index c92bdbf..dfc061f 100644
+--- a/BungeeCord-Patches/0041-Handle-plugin-prefixes-using-Log4J.patch
++++ b/BungeeCord-Patches/0041-Handle-plugin-prefixes-using-Log4J.patch
+@@ -1,4 +1,4 @@
+-From cc1216e4ae16ecc16b06b848ddea7c1a15834b8b Mon Sep 17 00:00:00 2001
++From 2d3b66fa752efcd0db21a80ac96cbfba50aefeb4 Mon Sep 17 00:00:00 2001
+ From: Minecrell <dev@minecrell.net>
+ Date: Fri, 22 Sep 2017 13:07:31 +0200
+ Subject: [PATCH] Handle plugin prefixes using Log4J
+@@ -44,6 +44,3 @@ index d4a81199..3664f30e 100644
+              <Policies>
+                  <TimeBasedTriggeringPolicy />
+                  <OnStartupTriggeringPolicy />
+--- 
+-2.14.1
+-
+diff --git a/BungeeCord-Patches/0042-Allow-plugins-to-use-SLF4J-for-logging.patch b/BungeeCord-Patches/0042-Allow-plugins-to-use-SLF4J-for-logging.patch
+index 23bcfbe..ac01e2b 100644
+--- a/BungeeCord-Patches/0042-Allow-plugins-to-use-SLF4J-for-logging.patch
++++ b/BungeeCord-Patches/0042-Allow-plugins-to-use-SLF4J-for-logging.patch
+@@ -1,4 +1,4 @@
+-From 8d7700a5ef39cf148965e355adafccd27a02900a Mon Sep 17 00:00:00 2001
++From b96af42e0a26834d0d3fd88b1f1ae963a86e1ab2 Mon Sep 17 00:00:00 2001
+ From: Minecrell <dev@minecrell.net>
+ Date: Fri, 22 Sep 2017 13:15:09 +0200
+ Subject: [PATCH] Allow plugins to use SLF4J for logging
+@@ -54,6 +54,3 @@ index 78045e1d..d078cd68 100644
+          <dependency>
+              <groupId>com.lmax</groupId>
+              <artifactId>disruptor</artifactId>
+--- 
+-2.14.1
+-
+diff --git a/BungeeCord-Patches/0043-Add-Log4j-configuration-that-replicates-the-old-Bung.patch b/BungeeCord-Patches/0043-Add-Log4j-configuration-that-replicates-the-old-Bung.patch
+index 54cd3f2..199d5ca 100644
+--- a/BungeeCord-Patches/0043-Add-Log4j-configuration-that-replicates-the-old-Bung.patch
++++ b/BungeeCord-Patches/0043-Add-Log4j-configuration-that-replicates-the-old-Bung.patch
+@@ -1,4 +1,4 @@
+-From 11629f33a3756606d47546784605aa3a7ae7fb41 Mon Sep 17 00:00:00 2001
++From 23d42dc4a621af1e0826827a761e1a776e11b658 Mon Sep 17 00:00:00 2001
+ From: Minecrell <dev@minecrell.net>
+ Date: Sun, 24 Sep 2017 12:06:49 +0200
+ Subject: [PATCH] Add Log4j configuration that replicates the old BungeeCord
+@@ -46,6 +46,3 @@ index 00000000..bf132953
+ +        </AsyncRoot>
+ +    </Loggers>
+ +</Configuration>
+--- 
+-2.14.3
+-
+diff --git a/BungeeCord-Patches/0044-Add-console-command-completion.patch b/BungeeCord-Patches/0044-Add-console-command-completion.patch
+index f35934a..cf32dd6 100644
+--- a/BungeeCord-Patches/0044-Add-console-command-completion.patch
++++ b/BungeeCord-Patches/0044-Add-console-command-completion.patch
+@@ -1,4 +1,4 @@
+-From 4f89985a92b0dc63f3a7467b77c421b69d52aff8 Mon Sep 17 00:00:00 2001
++From b6288059b51724631fbeed447e784a9eb8399b6e Mon Sep 17 00:00:00 2001
+ From: Minecrell <dev@minecrell.net>
+ Date: Tue, 26 Sep 2017 18:59:37 +0200
+ Subject: [PATCH] Add console command completion
+@@ -101,6 +101,3 @@ index 6cfe283a..31967d7d 100644
+                  .build();
+          reader.setOpt(LineReader.Option.DISABLE_EVENT_EXPANSION);
+          reader.unsetOpt(LineReader.Option.INSERT_TAB);
+--- 
+-2.18.0
+-
+diff --git a/BungeeCord-Patches/0045-Providing-access-to-the-player-s-LoginResult-on-Logi.patch b/BungeeCord-Patches/0045-Providing-access-to-the-player-s-LoginResult-on-Logi.patch
+index b8db205..a72a5a8 100644
+--- a/BungeeCord-Patches/0045-Providing-access-to-the-player-s-LoginResult-on-Logi.patch
++++ b/BungeeCord-Patches/0045-Providing-access-to-the-player-s-LoginResult-on-Logi.patch
+@@ -1,4 +1,4 @@
+-From 97a884f769d667547d3398d81aac496740aa8fe4 Mon Sep 17 00:00:00 2001
++From 4850dd47c4bdb1a137a2c5f718ee6359c86d0684 Mon Sep 17 00:00:00 2001
+ From: phenomax <phenomax@revayd.net>
+ Date: Thu, 10 Aug 2017 18:41:17 +0200
+ Subject: [PATCH] Providing access to the player's LoginResult on LoginEvent
+@@ -64,6 +64,3 @@ index 14929879..88b9a18c 100644
+      }
+  
+      @Override
+--- 
+-2.16.3
+-
+diff --git a/BungeeCord-Patches/0046-Optionally-log-InitialHandler-connections.patch b/BungeeCord-Patches/0046-Optionally-log-InitialHandler-connections.patch
+index af4326c..1b5505d 100644
+--- a/BungeeCord-Patches/0046-Optionally-log-InitialHandler-connections.patch
++++ b/BungeeCord-Patches/0046-Optionally-log-InitialHandler-connections.patch
+@@ -1,4 +1,4 @@
+-From 24a81a16c1096e60dcadbf0ddd89d24793608294 Mon Sep 17 00:00:00 2001
++From d8162f7e974663f7005b156c2313b06aa9821a59 Mon Sep 17 00:00:00 2001
+ From: Gabriele C <sgdc3.mail@gmail.com>
+ Date: Thu, 8 Feb 2018 19:10:52 +0100
+ Subject: [PATCH] Optionally log InitialHandler connections
+@@ -71,6 +71,3 @@ index 88b9a18c..1accd61d 100644
+                  thisState = State.USERNAME;
+                  ch.setProtocol( Protocol.LOGIN );
+  
+--- 
+-2.16.3
+-
+diff --git a/BungeeCord-Patches/0047-Forge-is-a-first-class-citizen.patch b/BungeeCord-Patches/0047-Forge-is-a-first-class-citizen.patch
+index 8bbd11b..6fbd476 100644
+--- a/BungeeCord-Patches/0047-Forge-is-a-first-class-citizen.patch
++++ b/BungeeCord-Patches/0047-Forge-is-a-first-class-citizen.patch
+@@ -1,4 +1,4 @@
+-From 11d2b646be887ba892480c2d92a704f9fe484892 Mon Sep 17 00:00:00 2001
++From ce45d240746fda665ef4169aa242be6bf3464535 Mon Sep 17 00:00:00 2001
+ From: Jamie Mansfield <dev@jamierocks.uk>
+ Date: Mon, 28 May 2018 21:43:55 +0100
+ Subject: [PATCH] Forge is a first class citizen
+@@ -30,6 +30,3 @@ index d3f0b2d8..242535d0 100644
+  
+      @Synchronized("serversLock") // Waterfall
+      public void load()
+--- 
+-2.16.1
+-
+diff --git a/BungeeCord-Patches/0048-Add-UniversalProxy-changes.patch b/BungeeCord-Patches/0048-Add-UniversalProxy-changes.patch
+new file mode 100644
+index 0000000..995ac93
+--- /dev/null
++++ b/BungeeCord-Patches/0048-Add-UniversalProxy-changes.patch
+@@ -0,0 +1,728 @@
++From b478997dc5c8884410f7e50605512a9f8e3e45be Mon Sep 17 00:00:00 2001
++From: games647 <games647@users.noreply.github.com>
++Date: Sat, 14 Jul 2018 17:09:18 +0200
++Subject: [PATCH] Add UniversalProxy changes
++
++
++diff --git a/api/pom.xml b/api/pom.xml
++index 25d870d1..e084188f 100644
++--- a/api/pom.xml
+++++ b/api/pom.xml
++@@ -1,4 +1,3 @@
++-
++ <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++     <modelVersion>4.0.0</modelVersion>
++@@ -18,6 +17,14 @@
++     <name>Waterfall-API</name>
++     <description>API implemented by the Elastic Portal Suite</description>
++ 
+++    <repositories>
+++        <!-- CodeMc -->
+++        <repository>
+++            <id>codemc-repo</id>
+++            <url>https://repo.codemc.org/repository/maven-snapshots/</url>
+++        </repository>
+++    </repositories>
+++
++     <dependencies>
++         <dependency>
++             <groupId>io.github.waterfallmc</groupId>
++@@ -50,5 +57,12 @@
++             <artifactId>slf4j-api</artifactId>
++             <version>1.7.25</version>
++         </dependency>
+++
+++        <!-- Custom UniversalProxy -->
+++        <dependency>
+++            <groupId>com.github.steveice10</groupId>
+++            <artifactId>mcauthlib</artifactId>
+++            <version>1.1-SNAPSHOT</version>
+++        </dependency>
++     </dependencies>
++ </project>
++diff --git a/api/src/main/java/net/md_5/bungee/api/connection/ProxiedPlayer.java b/api/src/main/java/net/md_5/bungee/api/connection/ProxiedPlayer.java
++index 4638617d..ae61b125 100644
++--- a/api/src/main/java/net/md_5/bungee/api/connection/ProxiedPlayer.java
+++++ b/api/src/main/java/net/md_5/bungee/api/connection/ProxiedPlayer.java
++@@ -1,8 +1,12 @@
++ package net.md_5.bungee.api.connection;
++ 
+++import com.github.steveice10.mc.auth.exception.request.RequestException;
+++import com.github.steveice10.mc.auth.service.AuthenticationService;
+++
++ import java.util.Locale;
++ import java.util.Map;
++ import java.util.UUID;
+++
++ import net.md_5.bungee.api.Callback;
++ import net.md_5.bungee.api.ChatMessageType;
++ import net.md_5.bungee.api.CommandSender;
++@@ -20,6 +24,9 @@ import net.md_5.bungee.api.score.Scoreboard;
++ public interface ProxiedPlayer extends Connection, CommandSender
++ {
++ 
+++    public AuthenticationService login(UUID clientToken, String accessToken, String email) throws RequestException;
+++    public AuthenticationService login(String email, String password) throws RequestException;
+++
++     /**
++      * Represents the player's chat state.
++      */
++diff --git a/module/cmd-auth/pom.xml b/module/cmd-auth/pom.xml
++new file mode 100644
++index 00000000..956e5f39
++--- /dev/null
+++++ b/module/cmd-auth/pom.xml
++@@ -0,0 +1,20 @@
+++
+++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+++    <modelVersion>4.0.0</modelVersion>
+++
+++    <parent>
+++        <groupId>io.github.waterfallmc</groupId>
+++        <artifactId>waterfall-module</artifactId>
+++        <version>1.12-SNAPSHOT</version>
+++        <relativePath>../pom.xml</relativePath>
+++    </parent>
+++
+++    <groupId>io.github.waterfallmc</groupId>
+++    <artifactId>waterfall-module-cmd-auth</artifactId>
+++    <version>1.12-SNAPSHOT</version>
+++    <packaging>jar</packaging>
+++
+++    <name>cmd_auth</name>
+++    <description>Provides the auth command</description>
+++</project>
++diff --git a/module/cmd-auth/src/main/java/net/md_5/bungee/module/cmd/auth/CommandAuth.java b/module/cmd-auth/src/main/java/net/md_5/bungee/module/cmd/auth/CommandAuth.java
++new file mode 100644
++index 00000000..4cc76463
++--- /dev/null
+++++ b/module/cmd-auth/src/main/java/net/md_5/bungee/module/cmd/auth/CommandAuth.java
++@@ -0,0 +1,69 @@
+++package net.md_5.bungee.module.cmd.auth;
+++
+++import java.util.UUID;
+++import net.md_5.bungee.Util;
+++import net.md_5.bungee.api.CommandSender;
+++import net.md_5.bungee.api.connection.ProxiedPlayer;
+++import net.md_5.bungee.api.plugin.Command;
+++
+++/**
+++ * Command to list and switch a player between available servers.
+++ */
+++public class CommandAuth extends Command
+++{
+++
+++    public CommandAuth()
+++    {
+++        super( "auth", "bungeecord.command.auth" );
+++    }
+++
+++    @Override
+++    public void execute(CommandSender sender, String[] args)
+++    {
+++        if ( !( sender instanceof ProxiedPlayer ) )
+++        {
+++            return;
+++        }
+++
+++        if ( args.length == 0 )
+++        {
+++            sender.sendMessage( "Client Token is missing" );
+++        } else if ( args.length == 1 )
+++        {
+++            sender.sendMessage( "Access token is missing" );
+++        } else if ( args.length == 2 )
+++        {
+++            sender.sendMessage( "Email is missing" );
+++        } else
+++        {
+++            UUID clientToken = null;
+++            try
+++            {
+++                clientToken = UUID.fromString( args[0] );
+++            } catch ( IllegalArgumentException illegalArgumentException )
+++            {
+++                sender.sendMessage( "Invalid client Token" );
+++                return;
+++            }
+++
+++            UUID accessToken = null;
+++            try
+++            {
+++                accessToken = Util.getUUID( args[1] );
+++            } catch ( IllegalArgumentException illegalArgumentException )
+++            {
+++                sender.sendMessage( "Invalid acess Token" );
+++                return;
+++            }
+++
+++            ProxiedPlayer player = (ProxiedPlayer) sender;
+++            try {
+++                player.login( clientToken, accessToken.toString().replace( "-", "" ), args[2] );
+++                sender.sendMessage( "Sucessful logged in" );
+++            } catch (Exception ex) {
+++                sender.sendMessage( "Error authenticating" );
+++                sender.sendMessage( ex.getMessage() );
+++            }
+++        }
+++    }
+++}
++diff --git a/module/cmd-auth/src/main/java/net/md_5/bungee/module/cmd/auth/PluginServer.java b/module/cmd-auth/src/main/java/net/md_5/bungee/module/cmd/auth/PluginServer.java
++new file mode 100644
++index 00000000..c658c65e
++--- /dev/null
+++++ b/module/cmd-auth/src/main/java/net/md_5/bungee/module/cmd/auth/PluginServer.java
++@@ -0,0 +1,13 @@
+++package net.md_5.bungee.module.cmd.auth;
+++
+++import net.md_5.bungee.api.plugin.Plugin;
+++
+++public class PluginServer extends Plugin
+++{
+++
+++    @Override
+++    public void onEnable()
+++    {
+++        getProxy().getPluginManager().registerCommand( this, new CommandAuth() );
+++    }
+++}
++diff --git a/module/cmd-auth/src/main/resources/plugin.yml b/module/cmd-auth/src/main/resources/plugin.yml
++new file mode 100644
++index 00000000..dbb99ae8
++--- /dev/null
+++++ b/module/cmd-auth/src/main/resources/plugin.yml
++@@ -0,0 +1,5 @@
+++name: ${project.name}
+++main: net.md_5.bungee.module.cmd.auth.PluginServer
+++version: ${describe}
+++description: ${project.description}
+++author: ${module.author}
++diff --git a/module/cmd-server/src/main/java/net/md_5/bungee/module/cmd/server/CommandServer.java b/module/cmd-server/src/main/java/net/md_5/bungee/module/cmd/server/CommandServer.java
++index 920b9b36..d6b143a6 100644
++--- a/module/cmd-server/src/main/java/net/md_5/bungee/module/cmd/server/CommandServer.java
+++++ b/module/cmd-server/src/main/java/net/md_5/bungee/module/cmd/server/CommandServer.java
++@@ -1,27 +1,15 @@
++ package net.md_5.bungee.module.cmd.server;
++ 
++-import com.google.common.base.Function;
++-import com.google.common.base.Predicate;
++-import com.google.common.collect.Iterables;
++-import java.util.Collections;
++-import java.util.Map;
++-import net.md_5.bungee.api.ChatColor;
++ import net.md_5.bungee.api.CommandSender;
++ import net.md_5.bungee.api.ProxyServer;
++-import net.md_5.bungee.api.chat.ClickEvent;
++-import net.md_5.bungee.api.chat.ComponentBuilder;
++-import net.md_5.bungee.api.chat.HoverEvent;
++-import net.md_5.bungee.api.chat.TextComponent;
++ import net.md_5.bungee.api.config.ServerInfo;
++ import net.md_5.bungee.api.connection.ProxiedPlayer;
++-import net.md_5.bungee.api.event.ServerConnectEvent;
++ import net.md_5.bungee.api.plugin.Command;
++-import net.md_5.bungee.api.plugin.TabExecutor;
++ 
++ /**
++  * Command to list and switch a player between available servers.
++  */
++-public class CommandServer extends Command implements TabExecutor
+++public class CommandServer extends Command
++ {
++ 
++     public CommandServer()
++@@ -32,42 +20,17 @@ public class CommandServer extends Command implements TabExecutor
++     @Override
++     public void execute(CommandSender sender, String[] args)
++     {
++-        Map<String, ServerInfo> servers = ProxyServer.getInstance().getServers();
+++        if ( !( sender instanceof ProxiedPlayer ) )
+++        {
+++            return;
+++        }
+++        ProxiedPlayer player = (ProxiedPlayer) sender;
++         if ( args.length == 0 )
++         {
++-            if ( sender instanceof ProxiedPlayer )
++-            {
++-                sender.sendMessage( ProxyServer.getInstance().getTranslation( "current_server", ( (ProxiedPlayer) sender ).getServer().getInfo().getName() ) );
++-            }
++-
++-            TextComponent serverList = new TextComponent( ProxyServer.getInstance().getTranslation( "server_list" ) );
++-            serverList.setColor( ChatColor.GOLD );
++-            boolean first = true;
++-            for ( ServerInfo server : servers.values() )
++-            {
++-                if ( server.canAccess( sender ) )
++-                {
++-                    TextComponent serverTextComponent = new TextComponent( first ? server.getName() : ", " + server.getName() );
++-                    int count = server.getPlayers().size();
++-                    serverTextComponent.setHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_TEXT,
++-                            new ComponentBuilder( count + ( count == 1 ? " player" : " players" ) + "\n" )
++-                            .append( "Click to connect to the server" ).italic( true )
++-                            .create() ) );
++-                    serverTextComponent.setClickEvent( new ClickEvent( ClickEvent.Action.RUN_COMMAND, "/server " + server.getName() ) );
++-                    serverList.addExtra( serverTextComponent );
++-                    first = false;
++-                }
++-            }
++-            sender.sendMessage( serverList );
+++            player.sendMessage( "You have to provide the server you want to join to" );
++         } else
++         {
++-            if ( !( sender instanceof ProxiedPlayer ) )
++-            {
++-                return;
++-            }
++-            ProxiedPlayer player = (ProxiedPlayer) sender;
++-
++-            ServerInfo server = servers.get( args[0] );
+++            ServerInfo server = ProxyServer.getInstance().getServerInfo( args[0] );
++             if ( server == null )
++             {
++                 player.sendMessage( ProxyServer.getInstance().getTranslation( "no_server" ) );
++@@ -76,30 +39,8 @@ public class CommandServer extends Command implements TabExecutor
++                 player.sendMessage( ProxyServer.getInstance().getTranslation( "no_server_permission" ) );
++             } else
++             {
++-                player.connect( server, ServerConnectEvent.Reason.COMMAND );
+++                player.connect( server );
++             }
++         }
++     }
++-
++-    @Override
++-    public Iterable<String> onTabComplete(final CommandSender sender, final String[] args)
++-    {
++-        return ( args.length > 1 ) ? Collections.EMPTY_LIST : Iterables.transform( Iterables.filter( ProxyServer.getInstance().getServersCopy().values(), new Predicate<ServerInfo>() // Waterfall: use #getServersCopy()
++-        {
++-            private final String lower = ( args.length == 0 ) ? "" : args[0].toLowerCase();
++-
++-            @Override
++-            public boolean apply(ServerInfo input)
++-            {
++-                return input.getName().toLowerCase().startsWith( lower ) && input.canAccess( sender );
++-            }
++-        } ), new Function<ServerInfo, String>()
++-        {
++-            @Override
++-            public String apply(ServerInfo input)
++-            {
++-                return input.getName();
++-            }
++-        } );
++-    }
++ }
++diff --git a/module/pom.xml b/module/pom.xml
++index 2b827bb0..ff52478a 100644
++--- a/module/pom.xml
+++++ b/module/pom.xml
++@@ -23,6 +23,7 @@
++         <module>cmd-find</module>
++         <module>cmd-list</module>
++         <module>cmd-send</module>
+++        <module>cmd-auth</module>
++         <module>cmd-server</module>
++         <module>reconnect-yaml</module>
++     </modules>
++diff --git a/proxy/src/main/java/net/md_5/bungee/BungeeCord.java b/proxy/src/main/java/net/md_5/bungee/BungeeCord.java
++index 43c6e24a..0f97f4c7 100644
++--- a/proxy/src/main/java/net/md_5/bungee/BungeeCord.java
+++++ b/proxy/src/main/java/net/md_5/bungee/BungeeCord.java
++@@ -1,7 +1,6 @@
++ package net.md_5.bungee;
++ 
++ import com.google.common.base.Charsets;
++-import com.google.common.base.Joiner;
++ import com.google.common.base.Preconditions;
++ import com.google.common.base.Predicate;
++ import com.google.common.collect.Iterables;
++@@ -10,7 +9,7 @@ import com.google.common.collect.Sets;
++ import com.google.common.util.concurrent.ThreadFactoryBuilder;
++ import com.google.gson.Gson;
++ import com.google.gson.GsonBuilder;
++-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+++
++ import io.github.waterfallmc.waterfall.conf.WaterfallConfiguration;
++ import io.netty.bootstrap.ServerBootstrap;
++ import io.netty.channel.Channel;
++@@ -20,10 +19,10 @@ import io.netty.channel.ChannelFutureListener;
++ import io.netty.channel.ChannelOption;
++ import io.netty.channel.EventLoopGroup;
++ import io.netty.util.ResourceLeakDetector;
+++
++ import java.io.File;
++ import java.io.FileReader;
++ import java.io.IOException;
++-import java.io.PrintStream;
++ import java.net.InetSocketAddress;
++ import java.text.MessageFormat;
++ import java.util.ArrayList;
++@@ -45,9 +44,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
++ import java.util.logging.Handler;
++ import java.util.logging.Level;
++ import java.util.logging.Logger;
++-import lombok.Getter;
++-import lombok.Setter;
++-import lombok.Synchronized;
+++
++ import net.md_5.bungee.api.CommandSender;
++ import net.md_5.bungee.api.Favicon;
++ import net.md_5.bungee.api.ProxyServer;
++@@ -92,6 +89,11 @@ import net.md_5.bungee.query.RemoteQuery;
++ import net.md_5.bungee.scheduler.BungeeScheduler;
++ import net.md_5.bungee.util.CaseInsensitiveMap;
++ 
+++import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+++import lombok.Getter;
+++import lombok.Setter;
+++import lombok.Synchronized;
+++
++ /**
++  * Main BungeeCord proxy class.
++  */
++@@ -608,9 +610,13 @@ public class BungeeCord extends ProxyServer
++     // Waterfall end
++ 
++     @Override
++-    public ServerInfo getServerInfo(String name)
++-    {
++-        return config.getServerInfo( name ); // Waterfall
+++    public ServerInfo getServerInfo(String name) {
+++        ServerInfo serverInfo = getServers().get(name);
+++        if (name != null && name.contains(".") && serverInfo == null) {
+++            return new BungeeServerInfo(name, Util.getAddr(name), "Motd not fetched", false);
+++        }
+++
+++        return serverInfo;
++     }
++ 
++     @Override
++diff --git a/proxy/src/main/java/net/md_5/bungee/EncryptionUtil.java b/proxy/src/main/java/net/md_5/bungee/EncryptionUtil.java
++index e1ff4afb..06751322 100644
++--- a/proxy/src/main/java/net/md_5/bungee/EncryptionUtil.java
+++++ b/proxy/src/main/java/net/md_5/bungee/EncryptionUtil.java
++@@ -1,25 +1,31 @@
++ package net.md_5.bungee;
++ 
+++import java.io.IOException;
+++import java.io.UnsupportedEncodingException;
++ import java.security.GeneralSecurityException;
++ import java.security.Key;
++ import java.security.KeyFactory;
++ import java.security.KeyPair;
++ import java.security.KeyPairGenerator;
+++import java.security.MessageDigest;
++ import java.security.NoSuchAlgorithmException;
++ import java.security.PublicKey;
++ import java.security.spec.X509EncodedKeySpec;
++-import java.util.Arrays;
++ import java.util.Random;
+++
++ import javax.crypto.Cipher;
+++import javax.crypto.KeyGenerator;
++ import javax.crypto.SecretKey;
++ import javax.crypto.spec.SecretKeySpec;
++-import lombok.Getter;
+++
++ import net.md_5.bungee.jni.NativeCode;
++ import net.md_5.bungee.jni.cipher.BungeeCipher;
++ import net.md_5.bungee.jni.cipher.JavaCipher;
++ import net.md_5.bungee.jni.cipher.NativeCipher;
++-import net.md_5.bungee.protocol.packet.EncryptionResponse;
++ import net.md_5.bungee.protocol.packet.EncryptionRequest;
+++import net.md_5.bungee.protocol.packet.EncryptionResponse;
+++
+++import lombok.Getter;
++ 
++ /**
++  * Class containing all encryption related methods for the proxy.
++@@ -89,4 +95,58 @@ public class EncryptionUtil
++         hasher.init( Cipher.ENCRYPT_MODE, key );
++         return hasher.doFinal( b );
++     }
+++
+++    // UniversalProxy start
+++    public static SecretKey generateSharedKey()
+++    {
+++        try
+++        {
+++            KeyGenerator gen = KeyGenerator.getInstance( "AES" );
+++            gen.init( 128 );
+++            return gen.generateKey();
+++        } catch ( NoSuchAlgorithmException e )
+++        {
+++            throw new Error( "Failed to generate shared key.", e );
+++        }
+++    }
+++
+++    public static PublicKey decodePublicKey(byte bytes[]) throws IOException
+++    {
+++        try
+++        {
+++            return KeyFactory.getInstance( "RSA" ).generatePublic( new X509EncodedKeySpec( bytes ) );
+++        } catch ( GeneralSecurityException e )
+++        {
+++            throw new IOException( "Could not decrypt public key.", e );
+++        }
+++    }
+++
+++    public static byte[] getServerIdHash(String serverId, PublicKey publicKey, SecretKey secretKey)
+++    {
+++        try
+++        {
+++            return hash( "SHA-1", new byte[][]
+++                    {
+++                            serverId.getBytes( "ISO_8859_1" ), secretKey.getEncoded(), publicKey.getEncoded()
+++                    } );
+++        } catch ( UnsupportedEncodingException e )
+++        {
+++            throw new Error( "Failed to generate server id hash.", e );
+++        }
+++    }
+++
+++    private static byte[] hash(String encryption, byte[][] data) {
+++        try {
+++            MessageDigest digest = MessageDigest.getInstance(encryption);
+++            for(byte array[] : data) {
+++                digest.update(array);
+++            }
+++
+++            return digest.digest();
+++        } catch(NoSuchAlgorithmException e) {
+++            throw new Error("Failed to encrypt data.", e);
+++        }
+++    }
+++
+++    //UniversalProxy end
++ }
++diff --git a/proxy/src/main/java/net/md_5/bungee/ServerConnector.java b/proxy/src/main/java/net/md_5/bungee/ServerConnector.java
++index 9c6fa440..81db03ec 100644
++--- a/proxy/src/main/java/net/md_5/bungee/ServerConnector.java
+++++ b/proxy/src/main/java/net/md_5/bungee/ServerConnector.java
++@@ -1,14 +1,21 @@
++ package net.md_5.bungee;
++ 
+++import com.github.steveice10.mc.auth.data.GameProfile;
+++import com.github.steveice10.mc.auth.service.SessionService;
++ import com.google.common.base.Preconditions;
+++
++ import io.netty.buffer.ByteBuf;
++ import io.netty.buffer.ByteBufAllocator;
+++
+++import java.math.BigInteger;
+++import java.security.PublicKey;
++ import java.util.Arrays;
++ import java.util.Queue;
++ import java.util.Set;
++ import java.util.UUID;
++-import lombok.Getter;
++-import lombok.RequiredArgsConstructor;
+++
+++import javax.crypto.SecretKey;
+++
++ import net.md_5.bungee.api.ChatColor;
++ import net.md_5.bungee.api.ProxyServer;
++ import net.md_5.bungee.api.config.ServerInfo;
++@@ -27,14 +34,18 @@ import net.md_5.bungee.connection.LoginResult;
++ import net.md_5.bungee.forge.ForgeConstants;
++ import net.md_5.bungee.forge.ForgeServerHandler;
++ import net.md_5.bungee.forge.ForgeUtils;
+++import net.md_5.bungee.jni.cipher.BungeeCipher;
++ import net.md_5.bungee.netty.ChannelWrapper;
++ import net.md_5.bungee.netty.HandlerBoss;
++ import net.md_5.bungee.netty.PacketHandler;
++ import net.md_5.bungee.netty.PipelineUtils;
+++import net.md_5.bungee.netty.cipher.CipherDecoder;
+++import net.md_5.bungee.netty.cipher.CipherEncoder;
++ import net.md_5.bungee.protocol.DefinedPacket;
++ import net.md_5.bungee.protocol.MinecraftDecoder;
++ import net.md_5.bungee.protocol.Protocol;
++ import net.md_5.bungee.protocol.packet.EncryptionRequest;
+++import net.md_5.bungee.protocol.packet.EncryptionResponse;
++ import net.md_5.bungee.protocol.packet.Handshake;
++ import net.md_5.bungee.protocol.packet.Kick;
++ import net.md_5.bungee.protocol.packet.Login;
++@@ -46,6 +57,9 @@ import net.md_5.bungee.protocol.packet.ScoreboardObjective;
++ import net.md_5.bungee.protocol.packet.ScoreboardScore;
++ import net.md_5.bungee.protocol.packet.SetCompression;
++ 
+++import lombok.Getter;
+++import lombok.RequiredArgsConstructor;
+++
++ @RequiredArgsConstructor
++ public class ServerConnector extends PacketHandler
++ {
++@@ -59,6 +73,9 @@ public class ServerConnector extends PacketHandler
++     private ForgeServerHandler handshakeHandler;
++     private boolean obsolete;
++ 
+++    // UniversalProxy
+++    private final SessionService sessionService = new SessionService();
+++
++     private enum State
++     {
++ 
++@@ -136,7 +153,17 @@ public class ServerConnector extends PacketHandler
++         channel.write( copiedHandshake );
++ 
++         channel.setProtocol( Protocol.LOGIN );
++-        channel.write( new LoginRequest( user.getName() ) );
+++
+++        // UniversalProxy start
+++        LoginRequest loginRequest = user.getPendingConnection().getLoginRequest();
+++        if ( user.getAuthService() != null )
+++        {
+++            loginRequest.setData( user.getAuthService().getSelectedProfile().getName() );
+++        }
+++
+++        channel.write( loginRequest );
+++
+++        // UniversalProxy end
++     }
++ 
++     @Override
++@@ -308,9 +335,40 @@ public class ServerConnector extends PacketHandler
++     @Override
++     public void handle(EncryptionRequest encryptionRequest) throws Exception
++     {
++-        throw new RuntimeException( "Server is online mode!" );
+++        //UniversalProxy start
+++        if (user.getAuthService() == null) {
+++            throw new RuntimeException("Server is online mode!");
+++        }
+++
+++        SecretKey sharedSecret = EncryptionUtil.generateSharedKey();
+++
+++        String serverId = encryptionRequest.getServerId();
+++        byte[] inputVerify = encryptionRequest.getVerifyToken();
+++        PublicKey publicKey = EncryptionUtil.decodePublicKey(encryptionRequest.getPublicKey());
+++
+++        String serverHash = (new BigInteger(EncryptionUtil.getServerIdHash(serverId, publicKey, sharedSecret)))
+++                .toString(16);
+++
+++        GameProfile profile = user.getAuthService().getSelectedProfile();
+++        //make authentification request to mojang
+++        sessionService.joinServer(profile, user.getAuthService().getAccessToken(), serverHash);
+++
+++        byte[] secret = EncryptionUtil.encrypt(publicKey, sharedSecret.getEncoded());
+++        byte[] verify = EncryptionUtil.encrypt(publicKey, inputVerify);
+++        ch.write(new EncryptionResponse(secret, verify));
+++
+++        //encrypt connection
+++        BungeeCipher decrypt = EncryptionUtil.getCipher(false, sharedSecret);
+++        ch.addBefore(PipelineUtils.FRAME_DECODER, PipelineUtils.DECRYPT_HANDLER, new CipherDecoder(decrypt));
+++        BungeeCipher encrypt = EncryptionUtil.getCipher(true, sharedSecret);
+++        ch.addBefore(PipelineUtils.FRAME_PREPENDER, PipelineUtils.ENCRYPT_HANDLER, new CipherEncoder(encrypt));
+++        throw CancelSendSignal.INSTANCE;
+++
+++        // throw new RuntimeException( "Server is online mode!" );
++     }
++ 
+++    //UniversalProxy end
+++
++     @Override
++     public void handle(Kick kick) throws Exception
++     {
++diff --git a/proxy/src/main/java/net/md_5/bungee/UserConnection.java b/proxy/src/main/java/net/md_5/bungee/UserConnection.java
++index ef12a019..af4e7e95 100644
++--- a/proxy/src/main/java/net/md_5/bungee/UserConnection.java
+++++ b/proxy/src/main/java/net/md_5/bungee/UserConnection.java
++@@ -1,10 +1,13 @@
++ package net.md_5.bungee;
++ 
+++import com.github.steveice10.mc.auth.exception.request.RequestException;
+++import com.github.steveice10.mc.auth.service.AuthenticationService;
++ import com.google.common.base.Objects;
++ import com.google.common.base.Preconditions;
++ import com.google.common.collect.HashMultimap;
++ import com.google.common.collect.ImmutableMap;
++ import com.google.common.collect.Multimap;
+++
++ import io.netty.bootstrap.Bootstrap;
++ import io.netty.channel.Channel;
++ import io.netty.channel.ChannelFuture;
++@@ -12,6 +15,7 @@ import io.netty.channel.ChannelFutureListener;
++ import io.netty.channel.ChannelInitializer;
++ import io.netty.channel.ChannelOption;
++ import io.netty.util.internal.PlatformDependent;
+++
++ import java.net.InetSocketAddress;
++ import java.util.Collection;
++ import java.util.Collections;
++@@ -22,10 +26,7 @@ import java.util.Map;
++ import java.util.Queue;
++ import java.util.UUID;
++ import java.util.logging.Level;
++-import lombok.Getter;
++-import lombok.NonNull;
++-import lombok.RequiredArgsConstructor;
++-import lombok.Setter;
+++
++ import net.md_5.bungee.api.Callback;
++ import net.md_5.bungee.api.ChatMessageType;
++ import net.md_5.bungee.api.ProxyServer;
++@@ -52,19 +53,22 @@ import net.md_5.bungee.protocol.MinecraftDecoder;
++ import net.md_5.bungee.protocol.MinecraftEncoder;
++ import net.md_5.bungee.protocol.PacketWrapper;
++ import net.md_5.bungee.protocol.Protocol;
++-import net.md_5.bungee.protocol.ProtocolConstants;
++ import net.md_5.bungee.protocol.packet.Chat;
++ import net.md_5.bungee.protocol.packet.ClientSettings;
++ import net.md_5.bungee.protocol.packet.Kick;
++ import net.md_5.bungee.protocol.packet.PlayerListHeaderFooter;
++ import net.md_5.bungee.protocol.packet.PluginMessage;
++-import net.md_5.bungee.protocol.packet.Respawn;
++ import net.md_5.bungee.protocol.packet.SetCompression;
++ import net.md_5.bungee.tab.ServerUnique;
++ import net.md_5.bungee.tab.TabList;
++ import net.md_5.bungee.util.CaseInsensitiveSet;
++ import net.md_5.bungee.util.ChatComponentTransformer;
++ 
+++import lombok.Getter;
+++import lombok.NonNull;
+++import lombok.RequiredArgsConstructor;
+++import lombok.Setter;
+++
++ @RequiredArgsConstructor
++ public final class UserConnection implements ProxiedPlayer
++ {
++@@ -155,6 +159,37 @@ public final class UserConnection implements ProxiedPlayer
++         }
++     };
++ 
+++    // UniversalProxy start
+++    @Getter
+++    private AuthenticationService authService;
+++
+++    @Override
+++    public AuthenticationService login(UUID clientToken, String accessToken, String email) throws RequestException
+++    {
+++        AuthenticationService authService = new AuthenticationService( clientToken.toString() );
+++        authService.setUsername( email );
+++        authService.setAccessToken( accessToken );
+++        authService.login();
+++
+++        //update on success
+++        this.authService = authService;
+++        return authService;
+++    }
+++
+++    @Override
+++    public AuthenticationService login(String email, String password) throws RequestException {
+++        AuthenticationService authService = new AuthenticationService();
+++        authService.setUsername(email);
+++        authService.setPassword(password);
+++        authService.login();
+++
+++        //update on success
+++        this.authService = authService;
+++        return authService;
+++    }
+++
+++    // UniversalProxy end
+++
++     public void init()
++     {
++         this.entityRewrite = EntityMap.getEntityMap( getPendingConnection().getVersion() );
